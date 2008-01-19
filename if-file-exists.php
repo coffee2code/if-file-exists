@@ -1,18 +1,30 @@
 <?php
 /*
 Plugin Name: If File Exists
-Version: 0.9
+Version: 0.9.5
 Plugin URI: http://www.coffee2code.com/wp-plugins/
 Author: Scott Reilly
 Author URI: http://www.coffee2code.com
-Description: Display an HTML snippet that relates to a file if that file exists.
+Description: Check for the existence of a file and return simple boolean state or display an HTML snippet containing information about the file.
 
-=>> Visit the plugin's homepage for more information and latest updates  <<=
+If $echo is set to false, if_file_exists() returns a simple boolean (true or false) indicating if the file exists.
+
+If $echo is set to true, then a format string provided to itwill be used to display customizable information about 
+the file (such as file_name, file_url, or file_path).
+
+Compatible with WordPress 1.5+, 2.0+, 2.1+, 2.2+, and 2.3+.
+
+=>> Read the accompanying readme.txt file for more information.  Also, visit the plugin's homepage
+=>> for more information and the latest updates
 
 Installation:
 
-1. Download the file http://www.coffee2code.com/wp-plugins/if-file-exists.zip
-2. Activate the plugin from your WordPress admin 'Plugins' page.
+1. Download the file http://www.coffee2code.com/wp-plugins/if-file-exists.zip and unzip it into your 
+/wp-content/plugins/ directory.
+-OR-
+Copy and paste the the code ( http://www.coffee2code.com/wp-plugins/if-file-exists.phps ) into a file called 
+if-file-exists.php, and put that file into your /wp-content/plugins/ directory.
+2. Activate the plugin through the 'Plugins' admin menu in WordPress
 3. In one or more of your templates, utilize the template tag provided by this plugin like so:
 
 	<?php
@@ -25,11 +37,21 @@ Installation:
 		%file_name% : the name of the file, i.e. "pictures.zip"
 		%file_url% : the URL of the file, i.e. "http://yoursite.com/wp-content/uploads/pictures.zip";
 		%file_path% : the filesystem path to the file, i.e. "/usr/local/www/yoursite/wp-content/uploads/pictures.zip"
-		
+
+Examples:
+
+<?php if (if_file_exists($file_name, '', false)) :
+	// Do stuff here
+?>
+
+<?php if_file_exists($file_name, '%file_name% exists!'); ?>
+
+<?php if_file_exists($file_name, '%file_name% also exists in upload2 directory', 'wp-content/uploads2'); ?>
+
 */
 
 /*
-Copyright (c) 2007 by Scott Reilly (aka coffee2code)
+Copyright (c) 2007-2008 by Scott Reilly (aka coffee2code)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation 
 files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, 
@@ -48,7 +70,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 /*
 	Arguments:
 	$filename : the name of the filename whose existence is being checked for
-	$format : a string to be displayed and/or returned when $filename exists.  The following percent-tag substutitions exist for
+	$format : a string to be displayed and/or returned when $filename exists.  The following percent-tag substitutions exist for
 		use: %file_name%, %file_url%, %file_path% (see documentation above for more details).  If this argument is not provided,
 		then true or false is returned to indicate if the file exists.
 	$echo : should the $format string be echoed when the filename exists? (NOTE: the string always gets returned unless file does not exist)
