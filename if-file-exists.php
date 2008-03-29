@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: If File Exists
-Version: 0.9.5
-Plugin URI: http://www.coffee2code.com/wp-plugins/
+Version: 1.0
+Plugin URI: http://coffee2code.com/wp-plugins/if-file-exists
 Author: Scott Reilly
-Author URI: http://www.coffee2code.com
+Author URI: http://coffee2code.com
 Description: Check for the existence of a file and return simple boolean state or display an HTML snippet containing information about the file.
 
 If $echo is set to false, if_file_exists() returns a simple boolean (true or false) indicating if the file exists.
@@ -12,18 +12,15 @@ If $echo is set to false, if_file_exists() returns a simple boolean (true or fal
 If $echo is set to true, then a format string provided to itwill be used to display customizable information about 
 the file (such as file_name, file_url, or file_path).
 
-Compatible with WordPress 1.5+, 2.0+, 2.1+, 2.2+, and 2.3+.
+Compatible with WordPress 1.5+, 2.0+, 2.1+, 2.2+, 2.3+, and 2.5+.
 
 =>> Read the accompanying readme.txt file for more information.  Also, visit the plugin's homepage
 =>> for more information and the latest updates
 
 Installation:
 
-1. Download the file http://www.coffee2code.com/wp-plugins/if-file-exists.zip and unzip it into your 
+1. Download the file http://coffee2code.com/wp-plugins/if-file-exists.zip and unzip it into your 
 /wp-content/plugins/ directory.
--OR-
-Copy and paste the the code ( http://www.coffee2code.com/wp-plugins/if-file-exists.phps ) into a file called 
-if-file-exists.php, and put that file into your /wp-content/plugins/ directory.
 2. Activate the plugin through the 'Plugins' admin menu in WordPress
 3. In one or more of your templates, utilize the template tag provided by this plugin like so:
 
