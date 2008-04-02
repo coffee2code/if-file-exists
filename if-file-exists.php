@@ -7,10 +7,16 @@ Author: Scott Reilly
 Author URI: http://coffee2code.com
 Description: Check for the existence of a file and return simple boolean state or display an HTML snippet containing information about the file.
 
-If $echo is set to false, if_file_exists() returns a simple boolean (true or false) indicating if the file exists.
+If a format string is not passed to it, the function if_file_exists() returns a simple boolean (true or false)
+indicating if the specified file exists.
 
-If $echo is set to true, then a format string provided to itwill be used to display customizable information about 
-the file (such as file_name, file_url, or file_path).
+Otherwise, the format string provided to it will be used to construct a response string, which can be customized
+to display information about the file (such as file_name, file_url, or file_path).  If the $echo argument is true, 
+that string is displayed on the page.  Regardless of the value of $echo, the response string is returned by the 
+function.
+
+By default, the function assumes you are looking for the file in the default WordPress upload directory.  If you
+wish to search another directory, specify it as the $dir argument and not as a path attached to the filename.
 
 Compatible with WordPress 1.5+, 2.0+, 2.1+, 2.2+, 2.3+, and 2.5+.
 
@@ -37,7 +43,7 @@ Installation:
 
 Examples:
 
-<?php if (if_file_exists($file_name, '', false)) :
+<?php if (if_file_exists($file_name)) :
 	// Do stuff here
 ?>
 
@@ -70,8 +76,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	$format : a string to be displayed and/or returned when $filename exists.  The following percent-tag substitutions exist for
 		use: %file_name%, %file_url%, %file_path% (see documentation above for more details).  If this argument is not provided,
 		then true or false is returned to indicate if the file exists.
-	$echo : should the $format string be echoed when the filename exists? (NOTE: the string always gets returned unless file does not exist)
-		If the argument is not provided, the format will be echoed.
+	$echo : should the $format string be echoed when the filename exists? (NOTE: the string always gets returned unless file does not exist);  If the argument is not provided but a $format is provided, the format will be echoed.
 	$dir : if empty, it assumes the WordPress upload directory.  NOTE: This is a directory relative to the root of the site.
 */
 function if_file_exists($filename, $format = '', $echo = true, $dir = '') {
@@ -87,6 +92,7 @@ function if_file_exists($filename, $format = '', $echo = true, $dir = '') {
 	
 	if (empty($format)) {
 		$format = $exists;
+		$echo = false;
 	} elseif ($exists) {
 		$tags = array(
 			'%file_name%' => $filename,
@@ -97,7 +103,8 @@ function if_file_exists($filename, $format = '', $echo = true, $dir = '') {
 			$format = str_replace($tag, $new, $format);
 		}
 	} else {
-		$format = "<div>The file $filename was not found</div>";
+		//$format = "<div>The file $filename was not found</div>";
+		$format = '';
 	}
 
 	if ($echo)
