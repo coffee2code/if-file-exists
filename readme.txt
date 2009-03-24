@@ -3,9 +3,9 @@ Contributors: coffee2code
 Donate link: http://coffee2code.com
 Tags: file, existence
 Requires at least: 1.5
-Tested up to: 2.5
+Tested up to: 2.7.1
 Stable tag: trunk
-Version: 1.0
+Version: 1.0.1
 
 Check for the existence of a file and return simple boolean state or display an HTML snippet containing information about the file.
 
