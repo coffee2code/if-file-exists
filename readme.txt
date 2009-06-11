@@ -1,17 +1,17 @@
 === If File Exists ===
 Contributors: coffee2code
 Donate link: http://coffee2code.com
-Tags: file, existence
+Tags: file, exists, existence, coffee2code
 Requires at least: 1.5
-Tested up to: 2.7.1
-Stable tag: trunk
+Tested up to: 2.8
+Stable tag: 1.0.1
 Version: 1.0.1
 
-Check for the existence of a file and return simple boolean state or display an HTML snippet containing information about the file.
+Check for the existence of a file and return simple boolean value or display an HTML snippet containing information about the file.
 
 == Description ==
 
-Check for the existence of a file and return simple boolean state or display an HTML snippet containing information about the file.
+Check for the existence of a file and return simple boolean value or display an HTML snippet containing information about the file.
 
 If a format string is not passed to it, the function `if_file_exists()` returns a simple boolean (true or false) indicating if the specified file exists.
 

@@ -5,7 +5,7 @@ Version: 1.0.1
 Plugin URI: http://coffee2code.com/wp-plugins/if-file-exists
 Author: Scott Reilly
 Author URI: http://coffee2code.com
-Description: Check for the existence of a file and return simple boolean state or display an HTML snippet containing information about the file.
+Description: Check for the existence of a file and return simple boolean value or display an HTML snippet containing information about the file.
 
 If a format string is not passed to it, the function if_file_exists() returns a simple boolean (true or false)
 indicating if the specified file exists.
@@ -18,7 +18,7 @@ function.
 By default, the function assumes you are looking for the file in the default WordPress upload directory.  If you
 wish to search another directory, specify it as the $dir argument and not as a path attached to the filename.
 
-Compatible with WordPress 1.5+, 2.0+, 2.1+, 2.2+, 2.3+, 2.5+, 2.6+, 2.7+.
+Compatible with WordPress 1.5+, 2.0+, 2.1+, 2.2+, 2.3+, 2.5+, 2.6+, 2.7+, 2.8+.
 
 =>> Read the accompanying readme.txt file for more information.  Also, visit the plugin's homepage
 =>> for more information and the latest updates
