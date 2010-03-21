@@ -1,11 +1,16 @@
 <?php
+/**
+ * @package If_File_Exists
+ * @author Scott Reilly
+ * @version 1.0.3
+ */
 /*
 Plugin Name: If File Exists
-Version: 1.0.1
+Version: 1.0.3
 Plugin URI: http://coffee2code.com/wp-plugins/if-file-exists
 Author: Scott Reilly
 Author URI: http://coffee2code.com
-Description: Check for the existence of a file and return simple boolean value or display an HTML snippet containing information about the file.
+Description: Check if a file exists and return true/false or display a string containing information about the file.
 
 If a format string is not passed to it, the function if_file_exists() returns a simple boolean (true or false)
 indicating if the specified file exists.
@@ -18,7 +23,7 @@ function.
 By default, the function assumes you are looking for the file in the default WordPress upload directory.  If you
 wish to search another directory, specify it as the $dir argument and not as a path attached to the filename.
 
-Compatible with WordPress 1.5+, 2.0+, 2.1+, 2.2+, 2.3+, 2.5+, 2.6+, 2.7+, 2.8+.
+Compatible with WordPress 1.5+, 2.0+, 2.1+, 2.2+, 2.3+, 2.5+, 2.6+, 2.7+, 2.8+, 2.9+.
 
 =>> Read the accompanying readme.txt file for more information.  Also, visit the plugin's homepage
 =>> for more information and the latest updates
@@ -26,7 +31,7 @@ Compatible with WordPress 1.5+, 2.0+, 2.1+, 2.2+, 2.3+, 2.5+, 2.6+, 2.7+, 2.8+.
 Installation:
 
 1. Download the file http://coffee2code.com/wp-plugins/if-file-exists.zip and unzip it into your 
-/wp-content/plugins/ directory.
+/wp-content/plugins/ directory (or install via the built-in WordPress plugin installer).
 2. Activate the plugin through the 'Plugins' admin menu in WordPress
 3. In one or more of your templates, utilize the template tag provided by this plugin like so:
 
@@ -43,8 +48,10 @@ Installation:
 
 Examples:
 
-<?php if (if_file_exists($file_name)) :
-	// Do stuff here
+<?php
+	if ( if_file_exists($file_name) ) {
+		// Do stuff here
+	}
 ?>
 
 <?php if_file_exists($file_name, '%file_name% exists!'); ?>
@@ -54,7 +61,7 @@ Examples:
 */
 
 /*
-Copyright (c) 2007-2009 by Scott Reilly (aka coffee2code)
+Copyright (c) 2007-2010 by Scott Reilly (aka coffee2code)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation 
 files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, 
@@ -70,17 +77,23 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 */
 
-/*
-	Arguments:
-	$filename : the name of the filename whose existence is being checked for
-	$format : a string to be displayed and/or returned when $filename exists.  The following percent-tag substitutions exist for
-		use: %file_name%, %file_url%, %file_path% (see documentation above for more details).  If this argument is not provided,
-		then true or false is returned to indicate if the file exists.
-	$echo : should the $format string be echoed when the filename exists? (NOTE: the string always gets returned unless file does not exist);  If the argument is not provided but a $format is provided, the format will be echoed.
-	$dir : if empty, it assumes the WordPress upload directory.  NOTE: This is a directory relative to the root of the site.
-*/
-function if_file_exists($filename, $format = '', $echo = true, $dir = '') {
-	if (empty($dir)) {
+/**
+ * Checks if a file exists and returns true/false or displays a string
+ * containing information about the file.
+ *
+ * The following percent-tag substitutions are available for optional use in the $format string:
+ *   %file_name% : the name of the file, i.e. "pictures.zip"
+ *   %file_url% : the URL of the file, i.e. "http://yoursite.com/wp-content/uploads/pictures.zip";
+ *   %file_path% : the filesystem path to the file, i.e. "/usr/local/www/yoursite/wp-content/uploads/pictures.zip"
+ *
+ * @param string $filename Name of the filename whose existence is being checked. Do not include path information.
+ * @param string $format (optional) Text to be displayed or returned when $filename exists. Leave blank to return true or false.
+ * @param bool $echo (optional) Should $format be echoed when the filename exists? NOTE: the string always gets returned unless file does not exist). Default is true.
+ * @param string $dir (optional) The directory (relative to the root of the site) to check for $filename. If empty, the WordPress upload directory is assumed.
+ * @return bool|string True/false if no $format is specified, otherwise the percent-tag-substituted $format string.
+ */
+function if_file_exists( $filename, $format = '', $echo = true, $dir = '' ) {
+	if ( empty($dir) ) {
 		$uploads = wp_upload_dir();
 		$path = $uploads['path'];
 		$dir = str_replace(ABSPATH, '', $path);
@@ -90,16 +103,16 @@ function if_file_exists($filename, $format = '', $echo = true, $dir = '') {
 
 	$exists = file_exists($path . '/' . $filename);
 	
-	if (empty($format)) {
+	if ( empty($format) ) {
 		$format = $exists;
 		$echo = false;
-	} elseif ($exists) {
+	} elseif ( $exists ) {
 		$tags = array(
 			'%file_name%' => $filename,
 			'%file_path%' => $path . '/' . $filename,
 			'%file_url%' => get_bloginfo('siteurl') . '/' . $dir . '/' . $filename
 		);
-		foreach ($tags as $tag => $new) {
+		foreach ( $tags as $tag => $new ) {
 			$format = str_replace($tag, $new, $format);
 		}
 	} else {
@@ -107,7 +120,7 @@ function if_file_exists($filename, $format = '', $echo = true, $dir = '') {
 		$format = '';
 	}
 
-	if ($echo)
+	if ( $echo )
 		echo $format;
 	return $format;
 }
