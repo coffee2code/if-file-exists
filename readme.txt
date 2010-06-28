@@ -13,7 +13,7 @@ Check if a file exists and return true/false or display a string containing info
 
 Check if a file exists and return true/false or display a string containing information about the file.
 
-If a format string is not passed to it, the function `if_file_exists()` returns a simple boolean (true or false) indicating if the specified file exists.
+If a format string is not passed to it, the function `c2c_if_file_exists()` returns a simple boolean (true or false) indicating if the specified file exists.
 
 Otherwise, the format string provided to it will be used to construct a response string, which can be customized to display information about the file (such as file_name, file_url, or file_path).  If the `$echo` argument is true, that string is displayed on the page.  Regardless of the value of `$echo`, the response string is returned by the function.
 
@@ -31,7 +31,7 @@ The plugin provides one template tag for use in your theme templates.
 
 = Functions =
 
-* `<?php function if_file_exists($filename, $format = '', $echo = true, $dir = '') ?>`
+* `<?php function c2c_if_file_exists($filename, $format = '', $echo = true, $dir = '') ?>`
 
 = Arguments =
 
@@ -53,16 +53,26 @@ Name of the filename whose existence is being checked.  Do not include path info
 = Examples =
 
 * `<?php
-	if ( if_file_exists($file_name) ) {
+	if ( c2c_if_file_exists($file_name) ) {
 		// Do stuff here
 	}
 	?>`
 
-* `<?php if_file_exists($file_name, '%file_name% exists!'); ?>`
+* `<?php c2c_if_file_exists($file_name, '%file_name% exists!'); ?>`
 
-* `<?php if_file_exists($file_name, '%file_name% also exists in upload2 directory', 'wp-content/uploads2'); ?>`
+* `<?php c2c_if_file_exists($file_name, '%file_name% also exists in upload2 directory', 'wp-content/uploads2'); ?>`
 
 == Changelog ==
+
+= 1.1 =
+* Rename function from if_file_exists() to c2c_if_file_exists()
+* Deprecate if_file_exists, but continue to support it for backwards compatibility
+* Handle error when checking a non-existent patch
+* Check for possible existence of functions before defining them
+* Trim $dir argument of whitespace and forward slashes
+* Minor reformatting (spacing)
+* Remove trailing whitespace in header docs
+* Note compatibility with WP 3.0+
 
 = 1.0.3 =
 * Add PHPDoc documentation
