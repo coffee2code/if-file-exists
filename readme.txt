@@ -1,29 +1,32 @@
 === If File Exists ===
 Contributors: coffee2code
 Donate link: http://coffee2code.com/donate
-Tags: file, exists, existence, check, presence, files, coffee2code
+Tags: file, exists, existence, check, presence, files, theme, template tag, coffee2code
 Requires at least: 1.5
-Tested up to: 2.9.1
-Stable tag: 1.0.3
-Version: 1.0.3
+Tested up to: 3.0.1
+Stable tag: 2.0
+Version: 2.0
 
 Check if a file exists and return true/false or display a string containing information about the file.
+
 
 == Description ==
 
 Check if a file exists and return true/false or display a string containing information about the file.
 
-If a format string is not passed to it, the function `c2c_if_file_exists()` returns a simple boolean (true or false) indicating if the specified file exists.
+If a format string is not passed to it, the functions `c2c_if_file_exists()` and friends return a simple boolean (true or false) indicating if the specified file exists.
 
 Otherwise, the format string provided to it will be used to construct a response string, which can be customized to display information about the file (such as file_name, file_url, or file_path).  If the `$echo` argument is true, that string is displayed on the page.  Regardless of the value of `$echo`, the response string is returned by the function.
 
-By default, the function assumes you are looking for the file in the default WordPress upload directory.  If you wish to search another directory, specify it as the $dir argument and not as a path attached to the filename.
+By default, 'c2c_if_file_exists()' assumes you are looking for the file relative to the default WordPress upload directory.  If you wish to search another directory, specify it as the $dir argument.  'c2c_if_theme_file_exists()' assumes you are looking for a file relative to the currently active theme's home directory.  'c2c_if_plugin_file_exists()' assumes you are looking for a file relative to the directory that contains WordPress plugins.
+
 
 == Installation ==
 
 1. Unzip `if-file-exists.zip` inside the `/wp-content/plugins/` directory (or install via the built-in WordPress plugin installer)
 1. Activate the plugin through the 'Plugins' admin menu in WordPress
-1. In one or more of your templates, utilize the template tag provided by this plugin (see examples)
+1. In one or more of your templates, utilize one of the template tags provided by this plugin (see examples)
+
 
 == Template Tags ==
 
@@ -32,6 +35,11 @@ The plugin provides one template tag for use in your theme templates.
 = Functions =
 
 * `<?php function c2c_if_file_exists($filename, $format = '', $echo = true, $dir = '') ?>`
+Checks if a file exists and returns true/false or displays a string containing information about the file.
+* `<?php function c2c_if_plugin_file_exists( $filename, $format = '', $echo = true, $dir = '', $show_if_not_exists = '' ) ?>`
+Checks if a file exists (relative to the plugin directory) and returns true/false or displays a string containing information about the file.
+* `<?php function c2c_if_theme_file_exists( $filename, $format = '', $echo = true, $dir = '', $show_if_not_exists = '' ) ?>`
+Checks if a file exists (relative to the current theme's directory) and returns true/false or displays a string containing information about the file.  If the current theme is a child theme, then the function will check if the file exists first in the child theme's directory, and if not there, then it will check the parent theme's directory.
 
 = Arguments =
 
@@ -40,39 +48,127 @@ Name of the filename whose existence is being checked.  Do not include path info
 
 * `$format`
 (optional) String to be displayed or returned when $filename exists. Leave blank to return true or false.  The following percent-tag substitutions are available for optional use in the $format string:
-	`%file_name%` : the name of the file, i.e. "pictures.zip"
-	`%file_url%` : the URL of the file, i.e. "http://yoursite.com/wp-content/uploads/pictures.zip";
-	`%file_path%`: the filesystem path to the file, i.e. "/usr/local/www/yoursite/wp-content/uploads/pictures.zip"
+    * `%file_directory%` : the directory of the file, i.e. "/usr/local/www/yoursite/wp-content/uploads/"
+    * `%file_extension%` : the extension of the file, i.e. "zip"`
+    * `%file_name%` : the name of the file, i.e. "pictures.zip"
+    * `%file_url%` : the URL of the file, i.e. "http://yoursite.com/wp-content/uploads/pictures.zip"
+    * `%file_path%`: the filesystem path to the file, i.e. "/usr/local/www/yoursite/wp-content/uploads/pictures.zip"
 
 * `$echo`
 (optional) Should `$format` be echoed when the filename exists? NOTE: the string always gets returned unless file does not exist). Default is true.
 
 * `$dir`
-(optional) The directory (relative to the root of the site) to check for $filename. If empty, the WordPress upload directory is assumed.
+(optional) The directory (relative to the root of the site) to check for $filename. If empty, the WordPress upload directory is assumed (if using `c2c_if_file_exists()`).
+
+* `$show_if_not_exists`
+(optional) Text to display if the file does not exists. $format must also be specified. Format is the same as $format argument.
 
 = Examples =
 
 * `<?php
-	if ( c2c_if_file_exists($file_name) ) {
-		// Do stuff here
-	}
-	?>`
+$format = "<a href='%file_url%'>Download %file_name% now!</a>";
+$file_name = 'pictures-' . get_the_ID() . '.zip';
+c2c_if_file_exists($file_name, $format);
+?>`
+
+* `<?php
+if ( c2c_if_file_exists($file_name) ) {
+   // Do stuff here
+}
+?>`
 
 * `<?php c2c_if_file_exists($file_name, '%file_name% exists!'); ?>`
 
-* `<?php c2c_if_file_exists($file_name, '%file_name% also exists in upload2 directory', 'wp-content/uploads2'); ?>`
+* `<?php c2c_if_file_exists($file_name, '%file_name% also exists in upload2 directory', true, 'wp-content/uploads2'); ?>`
+
+* `<?php c2c_if_file_exists($file_name, '%file_name% also exists in upload2 directory', true, 'wp-content/uploads2', '%file_name% did not exist!'); ?>`
+
+* `<?php c2c_if_plugin_file_exists('akismet/akismet.php', 'Akismet is present'); ?>`
+
+* `<?php c2c_if_theme_file_exists('home.php', 'Home template is present', true, '', 'Home template does not exist.'); ?>`
+
+
+== Filters ==
+
+The plugin exposes three filters for hooking.  Typically, customizations utilizing these hooks would be put into your active theme's functions.php file, or used by another plugin.
+
+= c2c_if_file_exists (filter) =
+
+The 'c2c_if_file_exists' hook allows you to use an alternative approach to safely invoke `c2c_if_file_exists()` in such a way that if the plugin were deactivated or deleted, then your calls to the function won't cause errors in your site.
+
+Arguments:
+
+* same as for `c2c_if_file_exists()`
+
+Example:
+
+Instead of:
+
+`<?php c2c_if_file_exists( $file, '%file_url%' ); ?>`
+
+Do:
+
+`<?php apply_filters( 'c2c_if_file_exists', $file, '%file_url%' ); ?>`
+
+= c2c_if_plugin_file_exists (filter) =
+
+The 'c2c_if_plugin_file_exists' hook allows you to use an alternative approach to safely invoke `c2c_if_plugin_file_exists()` in such a way that if the plugin were deactivated or deleted, then your calls to the function won't cause errors in your site.
+
+Arguments:
+
+* same as for `c2c_if_plugin_file_exists()`
+
+Example:
+
+Instead of:
+
+`<?php $exists = c2c_if_plugin_file_exists( $file ); ?>`
+
+Do:
+
+`<?php $exists = apply_filters( 'c2c_if_plugin_file_exists', $file ); ?>`
+
+= c2c_if_theme_file_exists (filter) =
+
+The 'c2c_if_theme_file_exists' hook allows you to use an alternative approach to safely invoke `c2c_if_theme_file_exists()` in such a way that if the plugin were deactivated or deleted, then your calls to the function won't cause errors in your site.
+
+Arguments:
+
+* same as for `c2c_if_theme_file_exists()`
+
+Example:
+
+Instead of:
+
+`<?php $exists = c2c_if_theme_file_exists( $file ); ?>`
+
+Do:
+
+`<?php $exists = apply_filters( 'c2c_if_theme_file_exists', $file ); ?>`
+
 
 == Changelog ==
 
-= 1.1 =
+= 2.0 =
 * Rename function from if_file_exists() to c2c_if_file_exists()
 * Deprecate if_file_exists, but continue to support it for backwards compatibility
-* Handle error when checking a non-existent patch
+* Add c2c_if_plugin_file_exists()
+* Add c2c_if_theme_file_exists()
+* Add additional optional argument of $show_if_not_exists to indicate text to show if no file exists (when $format is also specified)
+* Add new recognized format tag %file_directory%
+* Add new recognized format tag %file_extension%
+* Add hook 'c2c_if_file_exists' (filter), 'c2c_if_plugin_file_exists' (filter), and 'c2c_if_theme_file_exists' (filter) to respond to the function of the same name so that users can use the apply_filters() notation for invoking template tag
+* Handle error when checking a non-existent path
+* Handle being sent empty string as filename
 * Check for possible existence of functions before defining them
 * Trim $dir argument of whitespace and forward slashes
 * Minor reformatting (spacing)
+* Remove docs from top of plugin file (all that and more are in readme.txt)
 * Remove trailing whitespace in header docs
 * Note compatibility with WP 3.0+
+* Drop compatibility with versions of WP older than 2.7
+* Fix typo in example code
+* Add Filters and Upgrade Notice sections to readme.txt
 
 = 1.0.3 =
 * Add PHPDoc documentation
@@ -90,3 +186,9 @@ Name of the filename whose existence is being checked.  Do not include path info
 
 = 1.0 =
 * Initial release
+
+
+== Upgrade Notice ==
+
+= 2.0 =
+Recommended feature update. Highlights: added c2c_if_plugin_file_exists() and c2c_if_theme_file_exists(); added %file_directory% and %file_extension%; added hooks for customization; minor fixes and tweaks; renamed blog_time() to c2c_blog_time(); renamed class; verified WP 3.0 compatibility.
