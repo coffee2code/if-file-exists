@@ -3,9 +3,9 @@ Contributors: coffee2code
 Donate link: http://coffee2code.com/donate
 Tags: file, exists, existence, check, presence, files, theme, template tag, coffee2code
 Requires at least: 1.5
-Tested up to: 3.0.1
-Stable tag: 2.0
-Version: 2.0
+Tested up to: 3.2
+Stable tag: 2.1
+Version: 2.1
 
 Check if a file exists and return true/false or display a string containing information about the file.
 
@@ -20,6 +20,8 @@ Otherwise, the format string provided to it will be used to construct a response
 
 By default, 'c2c_if_file_exists()' assumes you are looking for the file relative to the default WordPress upload directory.  If you wish to search another directory, specify it as the $dir argument.  'c2c_if_theme_file_exists()' assumes you are looking for a file relative to the currently active theme's home directory.  'c2c_if_plugin_file_exists()' assumes you are looking for a file relative to the directory that contains WordPress plugins.
 
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/if-file-exists/) | [Author Homepage](http://coffee2code.com)
+
 
 == Installation ==
 
@@ -30,24 +32,24 @@ By default, 'c2c_if_file_exists()' assumes you are looking for the file relative
 
 == Template Tags ==
 
-The plugin provides one template tag for use in your theme templates.
+The plugin provides three template tags for use in your theme templates.
 
 = Functions =
 
 * `<?php function c2c_if_file_exists($filename, $format = '', $echo = true, $dir = '') ?>`
 Checks if a file exists and returns true/false or displays a string containing information about the file.
 * `<?php function c2c_if_plugin_file_exists( $filename, $format = '', $echo = true, $dir = '', $show_if_not_exists = '' ) ?>`
-Checks if a file exists (relative to the plugin directory) and returns true/false or displays a string containing information about the file.
+Checks if a file exists (relative to the plugins directory) and returns true/false or displays a string containing information about the file.
 * `<?php function c2c_if_theme_file_exists( $filename, $format = '', $echo = true, $dir = '', $show_if_not_exists = '' ) ?>`
 Checks if a file exists (relative to the current theme's directory) and returns true/false or displays a string containing information about the file.  If the current theme is a child theme, then the function will check if the file exists first in the child theme's directory, and if not there, then it will check the parent theme's directory.
 
 = Arguments =
 
 * `$filename`
-Name of the filename whose existence is being checked.  Do not include path information.
+String. Name of the filename whose existence is being checked.  Do not include path information.
 
 * `$format`
-(optional) String to be displayed or returned when $filename exists. Leave blank to return true or false.  The following percent-tag substitutions are available for optional use in the $format string:
+(optional) String. Text to be displayed or returned when $filename exists. Leave blank to return true or false.  The following percent-tag substitutions are available for optional use in the $format string:
     * `%file_directory%` : the directory of the file, i.e. "/usr/local/www/yoursite/wp-content/uploads/"
     * `%file_extension%` : the extension of the file, i.e. "zip"`
     * `%file_name%` : the name of the file, i.e. "pictures.zip"
@@ -55,13 +57,13 @@ Name of the filename whose existence is being checked.  Do not include path info
     * `%file_path%`: the filesystem path to the file, i.e. "/usr/local/www/yoursite/wp-content/uploads/pictures.zip"
 
 * `$echo`
-(optional) Should `$format` be echoed when the filename exists? NOTE: the string always gets returned unless file does not exist). Default is true.
+(optional) Boolean. Should `$format` be echoed when the filename exists? NOTE: the string always gets returned unless file does not exist). Default is true.
 
 * `$dir`
-(optional) The directory (relative to the root of the site) to check for $filename. If empty, the WordPress upload directory is assumed (if using `c2c_if_file_exists()`).
+(optional) String|Boolean. The directory (relative to the root of the site) to check for $filename. If empty, the WordPress upload directory is assumed (if using `c2c_if_file_exists()`). If 'true', then it indicates the filename includes the directory.
 
 * `$show_if_not_exists`
-(optional) Text to display if the file does not exists. $format must also be specified. Format is the same as $format argument.
+(optional) String. Text to display if the file does not exists. $format must also be specified. Format is the same as $format argument.
 
 = Examples =
 
@@ -83,7 +85,9 @@ if ( c2c_if_file_exists($file_name) ) {
 
 * `<?php c2c_if_file_exists($file_name, '%file_name% also exists in upload2 directory', true, 'wp-content/uploads2', '%file_name% did not exist!'); ?>`
 
-* `<?php c2c_if_plugin_file_exists('akismet/akismet.php', 'Akismet is present'); ?>`
+* `<?php c2c_if_plugin_file_exists('akismet.php', 'Akismet is present', true, 'akismet'); ?>`
+
+* `<?php c2c_if_plugin_file_exists('akismet/akismet.php', 'Akismet is present', true, true); ?>`
 
 * `<?php c2c_if_theme_file_exists('home.php', 'Home template is present', true, '', 'Home template does not exist.'); ?>`
 
@@ -149,6 +153,17 @@ Do:
 
 == Changelog ==
 
+= 2.1 =
+* Minor bugfix to prevent PHP warning when a file has no extension
+* Fix all functions to properly handle boolean $dir argument
+* Add c2c_test_if_file_exists() to perform some (15) simple tests on the provided functions
+* Disable unnecessarily outputting error message when default upload directory is not present -- the file should just not exist
+* Note compatibility through WP 3.2+
+* Call _deprecated_function() within if_file_exists() to generate proper notice/warning
+* Minor code formatting changes (spacing)
+* Update copyright date (2011)
+* Add plugin homepage and author links in description in readme.txt
+
 = 2.0 =
 * Rename function from if_file_exists() to c2c_if_file_exists()
 * Deprecate if_file_exists, but continue to support it for backwards compatibility
@@ -189,6 +204,9 @@ Do:
 
 
 == Upgrade Notice ==
+
+= 2.1 =
+Recommended minor update. Highlights: fixed a few minor bugs, added tests, clarified/updated some documentation, and verified compatibility with WordPress 3.2.
 
 = 2.0 =
 Recommended feature update. Highlights: added c2c_if_plugin_file_exists() and c2c_if_theme_file_exists(); added %file_directory% and %file_extension%; added hooks for customization; minor fixes and tweaks; renamed blog_time() to c2c_blog_time(); renamed class; verified WP 3.0 compatibility.
