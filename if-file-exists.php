@@ -2,17 +2,17 @@
 /**
  * @package If_File_Exists
  * @author Scott Reilly
- * @version 2.1
+ * @version 2.1.1
  */
 /*
 Plugin Name: If File Exists
-Version: 2.1
+Version: 2.1.1
 Plugin URI: http://coffee2code.com/wp-plugins/if-file-exists/
 Author: Scott Reilly
 Author URI: http://coffee2code.com
 Description: Check if a file exists and return true/false or display a string containing information about the file.
 
-Compatible with WordPress 2.7+, 2.8+, 2.9+, 3.0+, 3.1+, 3.2+.
+Compatible with WordPress 2.7+, 2.8+, 2.9+, 3.0+, 3.1+, 3.2+, 3.3+.
 
 =>> Read the accompanying readme.txt file for instructions and documentation.
 =>> Also, visit the plugin's homepage for additional information and updates.
@@ -21,7 +21,7 @@ Compatible with WordPress 2.7+, 2.8+, 2.9+, 3.0+, 3.1+, 3.2+.
 */
 
 /*
-Copyright (c) 2007-2011 by Scott Reilly (aka coffee2code)
+Copyright (c) 2007-2012 by Scott Reilly (aka coffee2code)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
 files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy,
