@@ -2,10 +2,12 @@
 Contributors: coffee2code
 Donate link: http://coffee2code.com/donate
 Tags: file, exists, existence, check, presence, files, theme, template tag, coffee2code
-Requires at least: 1.5
-Tested up to: 3.3
-Stable tag: 2.1.1
-Version: 2.1.1
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Requires at least: 2.7
+Tested up to: 3.4
+Stable tag: 2.1.2
+Version: 2.1.2
 
 Check if a file exists and return true/false or display a string containing information about the file.
 
@@ -153,6 +155,12 @@ Do:
 
 == Changelog ==
 
+= 2.1.2 =
+* Re-license as GPLv2 or later (from X11)
+* Add 'License' and 'License URI' header tags to readme.txt and plugin file
+* Remove ending PHP close tag
+* Note compatibility through WP 3.4+
+
 = 2.1.1 =
 * Note compatibility through WP 3.3+
 * Add link to plugin directory page to readme.txt
@@ -209,6 +217,9 @@ Do:
 
 
 == Upgrade Notice ==
+
+= 2.1.2 =
+Trivial update: noted compatibility through WP 3.4+; explicitly stated license
 
 = 2.1.1 =
 Trivial update: noted compatibility through WP 3.3+ and minor readme.txt tweaks
