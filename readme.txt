@@ -5,18 +5,18 @@ Tags: file, exists, existence, check, presence, files, theme, template tag, coff
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.7
-Tested up to: 3.4
-Stable tag: 2.1.2
-Version: 2.1.2
+Tested up to: 3.5
+Stable tag: 2.1.3
+Version: 2.1.3
 
 Check if a file exists and return true/false or display a string containing information about the file.
 
 
 == Description ==
 
-Check if a file exists and return true/false or display a string containing information about the file.
+This plugin provides the function `c2c_if_file_exists()` (and a couple others) that check if a file exists and either returns true/false or displays a string containing information about the file.
 
-If a format string is not passed to it, the functions `c2c_if_file_exists()` and friends return a simple boolean (true or false) indicating if the specified file exists.
+If a format string is not passed to it, the functions return a simple boolean (true or false) indicating if the specified file exists.
 
 Otherwise, the format string provided to it will be used to construct a response string, which can be customized to display information about the file (such as file_name, file_url, or file_path).  If the `$echo` argument is true, that string is displayed on the page.  Regardless of the value of `$echo`, the response string is returned by the function.
 
@@ -155,6 +155,13 @@ Do:
 
 == Changelog ==
 
+= 2.1.3 =
+* Add check to prevent execution of code if file is directly accessed
+* Minor changes to extended description
+* Minor code reformatting (spacing)
+* Note compatibility through WP 3.5+
+* Update copyright date (2013)
+
 = 2.1.2 =
 * Re-license as GPLv2 or later (from X11)
 * Add 'License' and 'License URI' header tags to readme.txt and plugin file
@@ -217,6 +224,9 @@ Do:
 
 
 == Upgrade Notice ==
+
+= 2.1.3 =
+Trivial update: noted compatibility through WP 3.5+; minor documentation changes
 
 = 2.1.2 =
 Trivial update: noted compatibility through WP 3.4+; explicitly stated license
