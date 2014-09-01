@@ -1,25 +1,24 @@
 <?php
 /**
+ * Plugin Name: If File Exists
+ * Version:     2.2.1
+ * Plugin URI:  http://coffee2code.com/wp-plugins/if-file-exists/
+ * Author:      Scott Reilly
+ * Author URI:  http://coffee2code.com/
+ * License:     GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * Description: Check if a file exists and return true/false or display a string containing information about the file.
+ *
+ * Compatible with WordPress 2.7 through 4.0+.
+ *
+ * =>> Read the accompanying readme.txt file for instructions and documentation.
+ * =>> Also, visit the plugin's homepage for additional information and updates.
+ * =>> Or visit: https://wordpress.org/plugins/if-file-exists/
+ *
  * @package If_File_Exists
  * @author Scott Reilly
- * @version 2.2
+ * @version 2.2.1
  */
-/*
-Plugin Name: If File Exists
-Version: 2.2
-Plugin URI: http://coffee2code.com/wp-plugins/if-file-exists/
-Author: Scott Reilly
-Author URI: http://coffee2code.com/
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Description: Check if a file exists and return true/false or display a string containing information about the file.
-
-Compatible with WordPress 2.7 through 3.8+.
-
-=>> Read the accompanying readme.txt file for instructions and documentation.
-=>> Also, visit the plugin's homepage for additional information and updates.
-=>> Or visit: http://wordpress.org/plugins/if-file-exists/
-*/
 
 /*
 	Copyright (c) 2007-2014 by Scott Reilly (aka coffee2code)
@@ -63,18 +62,19 @@ if ( ! function_exists( 'c2c_if_file_exists' ) ) :
  * @return bool|string True/false if no $format is specified, otherwise the percent-tag-substituted $format string.
  */
 function c2c_if_file_exists( $filename, $format = '', $echo = true, $dir = '', $show_if_not_exists = '' ) {
-	$error = false;
-	$path = '';
+	$error   = false;
+	$path    = '';
 	$abspath = ltrim( ABSPATH, '/' );
 
-	if ( ! is_bool( $dir ) )
+	if ( ! is_bool( $dir ) ) {
 		$dir = trim( trim( str_replace( $abspath, '', $dir ) ), '/' );
+	}
 
 	if ( false === $dir || empty( $dir ) ) {
 		$uploads = wp_upload_dir();
-		if ( isset( $uploads['error'] ) && ! empty( $uploads['error'] ) )
+		if ( isset( $uploads['error'] ) && ! empty( $uploads['error'] ) ) {
 			$error = true;
-		else {
+		} else {
 			$path = $uploads['path'];
 			$dir = str_replace( $abspath, '', $path );
 		}
@@ -97,10 +97,12 @@ function c2c_if_file_exists( $filename, $format = '', $echo = true, $dir = '', $
 //	} else
 	if ( empty( $format ) ) {
 		$format = $exists;
-		$echo = false;
+		$echo   = false;
 	} else {
-		if ( ! $exists )
+		if ( ! $exists ) {
 			$format = $show_if_not_exists;
+		}
+
 		if ( $format ) {
 			$pathparts = pathinfo( $full_path );
 			$tags = array(
@@ -110,13 +112,16 @@ function c2c_if_file_exists( $filename, $format = '', $echo = true, $dir = '', $
 				'%file_path%'      => $full_path,
 				'%file_url%'       => site_url() . '/' . $dir . '/' . $filename
 			);
-			foreach ( $tags as $tag => $new )
+
+			foreach ( $tags as $tag => $new ) {
 				$format = str_replace( $tag, $new, $format );
+			}
 		}
 	}
 
-	if ( $echo )
+	if ( $echo ) {
 		echo $format;
+	}
 
 	return $format;
 }
@@ -141,12 +146,13 @@ if ( ! function_exists( 'c2c_if_plugin_file_exists' ) ) :
  * @return bool|string True/false if no $format is specified, otherwise the percent-tag-substituted $format string.
  */
 function c2c_if_plugin_file_exists( $filename, $format = '', $echo = true, $dir = '', $show_if_not_exists = '' ) {
-	if ( true === $dir )
+	if ( true === $dir ) {
 		$filename = WP_PLUGIN_DIR . '/' . trim( $filename, '/' );
-	elseif ( ! empty( $dir ) && ! is_bool( $dir ) )
+	} elseif ( ! empty( $dir ) && ! is_bool( $dir ) ) {
 		$dir = WP_PLUGIN_DIR . '/' . trim( $dir, '/' );
-	else
+	} else {
 		$dir = WP_PLUGIN_DIR;
+	}
 
 	return c2c_if_file_exists( $filename, $format, $echo, $dir, $show_if_not_exists );
 }
@@ -176,8 +182,9 @@ if ( ! function_exists( 'c2c_if_theme_file_exists' ) ) :
 function c2c_if_theme_file_exists( $filename, $format = '', $echo = true, $dir = '', $show_if_not_exists = '' ) {
 	if ( ! is_bool( $dir ) ) {
 		$dir = trim( $dir, '/' );
-		if ( $dir )
+		if ( $dir ) {
 			$filename = $dir . '/' . $filename;
+		}
 	}
 
 	$filename = locate_template( array( $filename ), false );

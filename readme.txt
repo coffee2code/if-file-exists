@@ -5,8 +5,8 @@ Tags: file, exists, existence, check, presence, files, theme, template tag, coff
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.7
-Tested up to: 3.8
-Stable tag: 2.2
+Tested up to: 4.0
+Stable tag: 2.2.1
 
 Check if a file exists and return true/false or display a string containing information about the file.
 
@@ -21,7 +21,7 @@ Otherwise, the format string provided to it will be used to construct a response
 
 By default, 'c2c_if_file_exists()' assumes you are looking for the file relative to the default WordPress upload directory. If you wish to search another directory, specify it as the $dir argument. 'c2c_if_theme_file_exists()' assumes you are looking for a file relative to the currently active theme's home directory. 'c2c_if_plugin_file_exists()' assumes you are looking for a file relative to the directory that contains WordPress plugins.
 
-Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/if-file-exists/) | [Plugin Directory Page](http://wordpress.org/plugins/if-file-exists/) | [Author Homepage](http://coffee2code.com)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/if-file-exists/) | [Plugin Directory Page](https://wordpress.org/plugins/if-file-exists/) | [Author Homepage](http://coffee2code.com)
 
 
 == Installation ==
@@ -154,6 +154,13 @@ Do:
 
 == Changelog ==
 
+= 2.2.1 (2014-08-31) =
+* Minor plugin header reformatting
+* Minor code reformatting (spacing, bracing)
+* Change documentation links to wp.org to be https
+* Note compatibility through WP 4.0+
+* Add plugin icon
+
 = 2.2 (2013-12-29) =
 * Fix to set $dir to directory when passed as part of filename and not via $dir arg
 * Fix in c2c_if_plugin_file_exists() to ensure files are relative to WP_PLUGIN_DIR
@@ -236,6 +243,9 @@ Do:
 
 
 == Upgrade Notice ==
+
+= 2.2.1 =
+Trivial update: noted compatibility through WP 4.0+; added plugin icon.
 
 = 2.2 =
 Recommended minor update: fixed a few minor bugs; added unit tests; noted compatibility through WP 3.8+
