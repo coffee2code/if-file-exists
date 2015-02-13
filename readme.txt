@@ -5,8 +5,8 @@ Tags: file, exists, existence, check, presence, files, theme, template tag, coff
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.7
-Tested up to: 4.0
-Stable tag: 2.2.1
+Tested up to: 4.1
+Stable tag: 2.2.2
 
 Check if a file exists and return true/false or display a string containing information about the file.
 
@@ -154,6 +154,10 @@ Do:
 
 == Changelog ==
 
+= 2.2.2 (2015-02-13) =
+* Note compatibility through WP 4.1+
+* Update copyright date (2015)
+
 = 2.2.1 (2014-08-31) =
 * Minor plugin header reformatting
 * Minor code reformatting (spacing, bracing)
@@ -243,6 +247,9 @@ Do:
 
 
 == Upgrade Notice ==
+
+= 2.2.2 =
+Trivial update: noted compatibility through WP 4.1+ and updated copyright date (2015)
 
 = 2.2.1 =
 Trivial update: noted compatibility through WP 4.0+; added plugin icon.

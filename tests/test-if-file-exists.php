@@ -151,7 +151,8 @@ class Reveal_Template_Test extends WP_UnitTestCase {
 
 	function test_if_theme_file_exists_with_existing_file() {
 		$this->assertTrue( c2c_if_theme_file_exists( 'style.css' ) );
-		$this->assertTrue( c2c_if_theme_file_exists( 'twentyfourteen.pot', '', false, 'languages' ) );
+		// TODO: Be smarter about this and find an actual file in a theme subdirectory.
+		$this->assertTrue( c2c_if_theme_file_exists( 'ie.css', '', false, 'css' ) );
 	}
 
 	function test_filter_invocation_of_if_file_exists() {
@@ -166,7 +167,8 @@ class Reveal_Template_Test extends WP_UnitTestCase {
 
 	function test_filter_invocation_of_if_theme_file_exists() {
 		$this->assertFalse( apply_filters( 'c2c_if_theme_file_exists', 'nonexistent.txt' ) );
-		$this->assertEquals( 'twentyfourteen.pot', apply_filters( 'c2c_if_theme_file_exists', 'twentyfourteen.pot', '%file_name%', false, 'languages' ) );
+		// TODO: Be smarter about this and find an actual file in a theme subdirectory.
+		$this->assertEquals( 'ie.css', apply_filters( 'c2c_if_theme_file_exists', 'ie.css', '%file_name%', false, 'css' ) );
 	}
 
 }
