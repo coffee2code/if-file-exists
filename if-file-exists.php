@@ -9,14 +9,14 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Description: Check if a file exists and return true/false or display a string containing information about the file.
  *
- * Compatible with WordPress 2.7 through 4.1+.
+ * Compatible with WordPress 2.7 through 4.3+.
  *
  * =>> Read the accompanying readme.txt file for instructions and documentation.
  * =>> Also, visit the plugin's homepage for additional information and updates.
  * =>> Or visit: https://wordpress.org/plugins/if-file-exists/
  *
  * @package If_File_Exists
- * @author Scott Reilly
+ * @author  Scott Reilly
  * @version 2.2.2
  */
 
