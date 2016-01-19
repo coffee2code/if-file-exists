@@ -5,8 +5,8 @@ Tags: file, exists, existence, check, presence, files, theme, template tag, coff
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.7
-Tested up to: 4.3
-Stable tag: 2.2.2
+Tested up to: 4.4
+Stable tag: 2.2.3
 
 Check if a file exists and return true/false or display a string containing information about the file.
 
@@ -154,8 +154,14 @@ Do:
 
 == Changelog ==
 
-= () =
-* Change: Note compatibility through WP 4.3+.
+= 2.2.3 (2016-01-18) =
+* New: Add support for language packs:
+    * Define 'Text Domain' header attribute.
+    * Load textdomain.
+* New: Create empty index.php to prevent files from being listed if web server has enabled directory listings.
+* Change: Note compatibility through WP 4.4+.
+* Change: Explicitly declare methods in unit tests as public.
+* Change: Update copyright date (2016).
 
 = 2.2.2 (2015-02-13) =
 * Note compatibility through WP 4.1+
@@ -250,6 +256,9 @@ Do:
 
 
 == Upgrade Notice ==
+
+= 2.2.3 =
+Trivial update: improved support for localization, minor unit test tweaks, verified compatibility through WP 4.4+, and updated copyright date (2016)
 
 = 2.2.2 =
 Trivial update: noted compatibility through WP 4.1+ and updated copyright date (2015)
