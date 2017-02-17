@@ -146,6 +146,7 @@ class Reveal_Template_Test extends WP_UnitTestCase {
 
 	public function test_if_plugin_file_exists_with_nonexistent_file() {
 		$this->assertFalse( c2c_if_plugin_file_exists( 'nonexistent.txt' ) );
+		$this->assertFalse( c2c_if_theme_file_exists( 'nonexistent.txt', '', false, 'text' ) );
 	}
 
 	public function test_if_plugin_file_exists_with_existing_file() {
@@ -154,6 +155,7 @@ class Reveal_Template_Test extends WP_UnitTestCase {
 
 	public function test_if_theme_file_exists_with_nonexistent_file() {
 		$this->assertFalse( c2c_if_theme_file_exists( 'nonexistent.txt' ) );
+		$this->assertFalse( c2c_if_theme_file_exists( 'nonexistent.css', '', false, 'css' ) );
 	}
 
 	public function test_if_theme_file_exists_with_existing_file() {
