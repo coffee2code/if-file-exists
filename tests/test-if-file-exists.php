@@ -105,6 +105,7 @@ class Reveal_Template_Test extends WP_UnitTestCase {
 	}
 
 	public function test_show_if_not_exists_for_nonexistent_file() {
+		$dir = 'wp-includes';
 		$msg = 'file does not exist';
 
 		$this->assertEquals( $msg, c2c_if_file_exists( 'nonexistent.php', '%file_name%', false, $dir, $msg ) );
@@ -157,8 +158,9 @@ class Reveal_Template_Test extends WP_UnitTestCase {
 
 	public function test_if_theme_file_exists_with_existing_file() {
 		$this->assertTrue( c2c_if_theme_file_exists( 'style.css' ) );
-		// TODO: Be smarter about this and find an actual file in a theme subdirectory.
-		$this->assertTrue( c2c_if_theme_file_exists( 'ie.css', '', false, 'css' ) );
+		// TODO: Test finding a file in a subdirectory relative to current theme.
+		// (WP unit tests have no such example file to use.)
+		//$this->assertTrue( c2c_if_theme_file_exists( 'ie.css', '', false, 'css' ) );
 	}
 
 	public function test_filter_invocation_of_if_file_exists() {
@@ -173,8 +175,9 @@ class Reveal_Template_Test extends WP_UnitTestCase {
 
 	public function test_filter_invocation_of_if_theme_file_exists() {
 		$this->assertFalse( apply_filters( 'c2c_if_theme_file_exists', 'nonexistent.txt' ) );
-		// TODO: Be smarter about this and find an actual file in a theme subdirectory.
-		$this->assertEquals( 'ie.css', apply_filters( 'c2c_if_theme_file_exists', 'ie.css', '%file_name%', false, 'css' ) );
+		// TODO: Test finding a file in a subdirectory relative to current theme.
+		// (WP unit tests have no such example file to use.)
+		//$this->assertEquals( 'ie.css', apply_filters( 'c2c_if_theme_file_exists', 'ie.css', '%file_name%', false, 'css' ) );
 	}
 
 }
