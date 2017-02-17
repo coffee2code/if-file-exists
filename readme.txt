@@ -161,6 +161,7 @@ Do:
 * Change: Note compatibility through WP 4.7+
 * Change: Minor readme.txt content and formatting tweaks
 * Change: Update copyright date (2017)
+* New: Add LICENSE file
 
 = 2.2.3 (2016-01-18) =
 * New: Add support for language packs:
