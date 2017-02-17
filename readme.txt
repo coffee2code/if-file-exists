@@ -5,7 +5,7 @@ Tags: file, exists, existence, check, presence, files, theme, template tag, coff
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.7
-Tested up to: 4.4
+Tested up to: 4.7
 Stable tag: 2.2.3
 
 Check if a file exists and return true/false or display a string containing information about the file.
@@ -159,6 +159,7 @@ Do:
 * Change: Update unit test bootstrap
     * Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable
     * Enable more error output for unit tests
+* Change: Note compatibility through WP 4.7+
 * Change: Update copyright date (2017)
 
 = 2.2.3 (2016-01-18) =

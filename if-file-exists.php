@@ -10,7 +10,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Description: Check if a file exists and return true/false or display a string containing information about the file.
  *
- * Compatible with WordPress 2.7 through 4.4+.
+ * Compatible with WordPress 2.7 through 4.7+.
  *
  * =>> Read the accompanying readme.txt file for instructions and documentation.
  * =>> Also, visit the plugin's homepage for additional information and updates.
