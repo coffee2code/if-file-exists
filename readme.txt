@@ -13,11 +13,10 @@ Check if a file exists and return true/false or display a string containing info
 
 == Description ==
 
-This plugin provides the function `c2c_if_file_exists()` (and a couple others) that check if a file exists and either returns true/false or displays a string containing information about the file.
+This plugin provides the functions `c2c_if_file_exists()`, `c2c_if_theme_file_exists()`, `c2c_if_plugin_file_exists()` that check if a file exists and either return true/false or display a string containing information about the file.
 
-If a format string is not passed to it, the functions return a simple boolean (true or false) indicating if the specified file exists.
-
-Otherwise, the format string provided to it will be used to construct a response string, which can be customized to display information about the file (such as file_name, file_url, or file_path). If the `$echo` argument is true, that string is displayed on the page. Regardless of the value of `$echo`, the response string is returned by the function.
+* If a format string is not passed to it, the functions return a simple boolean (true or false) indicating if the specified file exists.
+* Otherwise, the format string provided to it will be used to construct a response string, which can be customized to display information about the file (such as file_name, file_url, or file_path). If the `$echo` argument is true, that string is displayed on the page. Regardless of the value of `$echo`, the response string is returned by the function.
 
 By default, 'c2c_if_file_exists()' assumes you are looking for the file relative to the default WordPress upload directory. If you wish to search another directory, specify it as the $dir argument. 'c2c_if_theme_file_exists()' assumes you are looking for a file relative to the currently active theme's home directory. 'c2c_if_plugin_file_exists()' assumes you are looking for a file relative to the directory that contains WordPress plugins.
 
@@ -26,9 +25,9 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/if-file-exists/) | [P
 
 == Installation ==
 
-1. Unzip `if-file-exists.zip` inside the `/wp-content/plugins/` directory (or install via the built-in WordPress plugin installer)
-1. Activate the plugin through the 'Plugins' admin menu in WordPress
-1. In one or more of your templates, utilize one of the template tags provided by this plugin (see examples)
+1. Install via the built-in WordPress plugin installer. Or download and unzip `if-file-exists.zip` inside the plugins directory for your site (typically `wp-content/plugins/`)
+2. Activate the plugin through the 'Plugins' admin menu in WordPress
+3. In one or more of your templates, utilize one of the template tags provided by this plugin (see examples)
 
 
 == Template Tags ==
@@ -95,7 +94,7 @@ if ( c2c_if_file_exists($file_name) ) {
 
 == Filters ==
 
-The plugin exposes three filters for hooking. Typically, customizations utilizing these hooks would be put into your active theme's functions.php file, or used by another plugin.
+The plugin exposes three filters for hooking. Code using these filters should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain). Less ideally, you could put them in your active theme's functions.php file.
 
 = c2c_if_file_exists (filter) =
 
@@ -160,6 +159,7 @@ Do:
     * Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable
     * Enable more error output for unit tests
 * Change: Note compatibility through WP 4.7+
+* Change: Minor readme.txt content and formatting tweaks
 * Change: Update copyright date (2017)
 
 = 2.2.3 (2016-01-18) =
