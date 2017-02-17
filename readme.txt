@@ -154,6 +154,10 @@ Do:
 
 == Changelog ==
 
+= () =
+* Change: Update unit test bootstrap
+    * Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable
+
 = 2.2.3 (2016-01-18) =
 * New: Add support for language packs:
     * Define 'Text Domain' header attribute.
