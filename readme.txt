@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.7
 Tested up to: 4.7
-Stable tag: 2.2.3
+Stable tag: 2.2.4
 
 Check if a file exists and return true/false or display a string containing information about the file.
 
@@ -153,7 +153,7 @@ Do:
 
 == Changelog ==
 
-= () =
+= 2.2.4 (2017-02-16) =
 * Fix: Fix a few unit tests
 * Change: Update unit test bootstrap
     * Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable
@@ -265,6 +265,9 @@ Do:
 
 
 == Upgrade Notice ==
+
+= 2.2.4 =
+Trivial update: fixed some unit tests, noted compatibility through WP 4.7+, updated copyright date
 
 = 2.2.3 =
 Trivial update: improved support for localization, minor unit test tweaks, verified compatibility through WP 4.4+, and updated copyright date (2016)
