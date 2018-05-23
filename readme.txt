@@ -154,6 +154,7 @@ Do:
 == Changelog ==
 
 = () =
+* New: Add README.md
 * New: Add GitHub link to readme
 * Change: Minor whitespace tweaks to unit test bootstrap
 * Change: Rename readme.txt section from 'Filters' to 'Hooks'
