@@ -92,7 +92,7 @@ if ( c2c_if_file_exists($file_name) ) {
 * `<?php c2c_if_theme_file_exists('home.php', 'Home template is present', true, '', 'Home template does not exist.'); ?>`
 
 
-== Filters ==
+== Hooks ==
 
 The plugin exposes three filters for hooking. Code using these filters should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain). Less ideally, you could put them in your active theme's functions.php file.
 
@@ -155,6 +155,7 @@ Do:
 
 = () =
 * New: Add GitHub link to readme
+* Change: Rename readme.txt section from 'Filters' to 'Hooks'
 * Change: Note compatibility through WP 4.9+
 * Change: Update copyright date (2018)
 
