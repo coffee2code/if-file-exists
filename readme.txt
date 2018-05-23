@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.7
 Tested up to: 4.9
-Stable tag: 2.2.4
+Stable tag: 2.2.5
 
 Check if a file exists and return true/false or display a string containing information about the file.
 
@@ -153,7 +153,7 @@ Do:
 
 == Changelog ==
 
-= () =
+= 2.2.5 (2018-05-22) =
 * New: Add README.md
 * New: Add GitHub link to readme
 * Change: Minor whitespace tweaks to unit test bootstrap
@@ -274,6 +274,9 @@ Do:
 
 
 == Upgrade Notice ==
+
+= 2.2.5 =
+Trivial update: noted compatibility through WP 4.9+, added README.md for GitHub, updated copyright date (2018), and other minor changes
 
 = 2.2.4 =
 Trivial update: fixed some unit tests, noted compatibility through WP 4.7+, updated copyright date
