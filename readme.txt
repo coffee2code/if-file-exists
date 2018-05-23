@@ -96,7 +96,7 @@ if ( c2c_if_file_exists($file_name) ) {
 
 The plugin exposes three filters for hooking. Code using these filters should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain). Less ideally, you could put them in your active theme's functions.php file.
 
-= c2c_if_file_exists (filter) =
+**c2c_if_file_exists (filter)**
 
 The 'c2c_if_file_exists' hook allows you to use an alternative approach to safely invoke `c2c_if_file_exists()` in such a way that if the plugin were deactivated or deleted, then your calls to the function won't cause errors in your site.
 
@@ -114,7 +114,7 @@ Do:
 
 `<?php apply_filters( 'c2c_if_file_exists', $file, '%file_url%' ); ?>`
 
-= c2c_if_plugin_file_exists (filter) =
+**c2c_if_plugin_file_exists (filter)**
 
 The 'c2c_if_plugin_file_exists' hook allows you to use an alternative approach to safely invoke `c2c_if_plugin_file_exists()` in such a way that if the plugin were deactivated or deleted, then your calls to the function won't cause errors in your site.
 
@@ -132,7 +132,7 @@ Do:
 
 `<?php $exists = apply_filters( 'c2c_if_plugin_file_exists', $file ); ?>`
 
-= c2c_if_theme_file_exists (filter) =
+**c2c_if_theme_file_exists (filter)**
 
 The 'c2c_if_theme_file_exists' hook allows you to use an alternative approach to safely invoke `c2c_if_theme_file_exists()` in such a way that if the plugin were deactivated or deleted, then your calls to the function won't cause errors in your site.
 
@@ -156,6 +156,7 @@ Do:
 = () =
 * New: Add GitHub link to readme
 * Change: Rename readme.txt section from 'Filters' to 'Hooks'
+* Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
 * Change: Note compatibility through WP 4.9+
 * Change: Update copyright date (2018)
 
