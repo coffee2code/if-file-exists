@@ -2,6 +2,7 @@
 
 ## _(in-progress)_
 * New: Add CHANGELOG.md and move all but most recent changelog entries into it
+* Change: Update License URI to be HTTPS
 
 ## 2.2.5 _(2018-05-22)_
 * New: Add README.md

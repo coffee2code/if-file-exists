@@ -7,7 +7,7 @@
  * Author URI:  http://coffee2code.com/
  * Text Domain: if-file-exists
  * License:     GPLv2 or later
- * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Description: Check if a file exists and return true/false or display a string containing information about the file.
  *
  * Compatible with WordPress 2.7 through 4.9+.
