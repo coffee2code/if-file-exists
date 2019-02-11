@@ -54,8 +54,7 @@ add_action( 'plugins_loaded', 'c2c_if_file_exists_load_textdomain' );
 
 if ( ! function_exists( 'c2c_if_file_exists' ) ) :
 /**
- * Checks if a file exists and returns true/false or displays a string
- * containing information about the file.
+ * Checks if a file exists.
  *
  * The following percent-tag substitutions are available for optional use in the $format string:
  *   %file_directory% : the directory of the file, i.e. "/usr/local/www/yoursite/wp-content/uploads/"
@@ -66,12 +65,25 @@ if ( ! function_exists( 'c2c_if_file_exists' ) ) :
  *
  * @since 2.0
  *
- * @param string $filename Name of the filename whose existence is being checked.
- * @param string $format (optional) Text to be displayed or returned when $filename exists. Leave blank to return true or false.
- * @param bool $echo (optional) Should $format be echoed when the filename exists? NOTE: the string always gets returned unless file does not exist). Default is true.
- * @param string|bool $dir (optional) The directory (relative to the root of the site) to check for $filename. If empty, the WordPress upload directory is assumed. If 'true', then it indicates the filename includes the directory.
- * @param string $show_if_not_exists (optional) Text to display if the file does not exist. $format must also be specified. Format is the same as $format argument.
- * @return bool|string True/false if no $format is specified, otherwise the percent-tag-substituted $format string.
+ * @param string      $filename           The name of the file to check for.
+ * @param string      $format             Optional. Text to be displayed or
+ *                                        returned when $filename exists. Leave
+ *                                        blank to return true or false. Default ''.
+ * @param bool        $echo               Optional. Should $format be echoed when
+ *                                        the filename exists? NOTE: the string
+ *                                        always gets returned unless file does
+ *                                        not exist). Default true.
+ * @param string|bool $dir                Optional. The directory (relative to the
+ *                                        current child or parent theme) to check
+ *                                        for $filename. If 'true', then it
+ *                                        indicates the filename includes the
+ *                                        directory. Default ''.
+ * @param string      $show_if_not_exists Optional. Text to display if the file
+ *                                        does not exist. $format must also be
+ *                                        specified. Format is the same as $format
+ *                                        argument. Default ''.
+ * @return bool|string True/false if no $format is specified, otherwise the
+ *                     percent-tag-substituted $format string.
  */
 function c2c_if_file_exists( $filename, $format = '', $echo = true, $dir = '', $show_if_not_exists = '' ) {
 	$error   = false;
@@ -143,19 +155,31 @@ endif;
 
 if ( ! function_exists( 'c2c_if_plugin_file_exists' ) ) :
 /**
- * Checks if a file exists (relative to the plugin directory) and returns
- * true/false or displays a string containing information about the file.
+ * Checks if a file exists relative to the plugins directory.
  *
- * Supports the same percent-tag substitutions as defined for c2c_if_file_exists().
+ * Supports the same percent-tag substitutions as defined for `c2c_if_file_exists()`.
  *
  * @since 2.0
  *
- * @param string $filename
- * @param string $format (optional) Text to be displayed or returned when $filename exists. Leave blank to return true or false.
- * @param bool $echo (optional) Should $format be echoed when the filename exists? NOTE: the string always gets returned unless file does not exist). Default is true.
- * @param string|bool $dir (optional) The directory (relative to the plugins directory) to check for $filename. If 'true', then it indicates the filename includes the directory.
- * @param string $show_if_not_exists (optional) Text to display if the file does not exist. $format must also be specified. Format is the same as $format argument.
- * @return bool|string True/false if no $format is specified, otherwise the percent-tag-substituted $format string.
+ * @param string      $filename           The name of the file to check for.
+ * @param string      $format             Optional. Text to be displayed or
+ *                                        returned when $filename exists. Leave
+ *                                        blank to return true or false. Default ''.
+ * @param bool        $echo               Optional. Should $format be echoed when
+ *                                        the filename exists? NOTE: the string
+ *                                        always gets returned unless file does
+ *                                        not exist). Default true.
+ * @param string|bool $dir                Optional. The directory (relative to the
+ *                                        current child or parent theme) to check
+ *                                        for $filename. If 'true', then it
+ *                                        indicates the filename includes the
+ *                                        directory. Default ''.
+ * @param string      $show_if_not_exists Optional. Text to display if the file
+ *                                        does not exist. $format must also be
+ *                                        specified. Format is the same as $format
+ *                                        argument. Default ''.
+ * @return bool|string True/false if no $format is specified, otherwise the
+ *                     percent-tag-substituted $format string.
  */
 function c2c_if_plugin_file_exists( $filename, $format = '', $echo = true, $dir = '', $show_if_not_exists = '' ) {
 	if ( true === $dir ) {
@@ -174,22 +198,36 @@ endif;
 
 if ( ! function_exists( 'c2c_if_theme_file_exists' ) ) :
 /**
- * Checks if a file exists (relative to the current theme's directory) and
- * returns true/false or displays a string containing information about the
+ * Checks if a file exists relative to the current theme's directory.
+ *
+ * Returns true/false or displays a string containing information about the
  * file. If the current theme is a child theme, then the function will check
  * if the file exists first in the child theme's directory, and if not there,
  * then it will check the parent theme's directory.
  *
- * Supports the same percent-tag substitutions as defined for c2c_if_file_exists().
+ * Supports the same percent-tag substitutions as defined for `c2c_if_file_exists()`.
  *
  * @since 2.0
  *
- * @param string $filename
- * @param string $format (optional) Text to be displayed or returned when $filename exists. Leave blank to return true or false.
- * @param bool $echo (optional) Should $format be echoed when the filename exists? NOTE: the string always gets returned unless file does not exist). Default is true.
- * @param string|bool $dir (optional) The directory (relative to the current child or parent theme) to check for $filename. If 'true', then it indicates the filename includes the directory.
- * @param string $show_if_not_exists (optional) Text to display if the file does not exist. $format must also be specified. Format is the same as $format argument.
- * @return bool|string True/false if no $format is specified, otherwise the percent-tag-substituted $format string.
+ * @param string      $filename           The name of the file to check for.
+ * @param string      $format             Optional. Text to be displayed or
+ *                                        returned when $filename exists. Leave
+ *                                        blank to return true or false. Default ''.
+ * @param bool        $echo               Optional. Should $format be echoed when
+ *                                        the filename exists? NOTE: the string
+ *                                        always gets returned unless file does
+ *                                        not exist). Default true.
+ * @param string|bool $dir                Optional. The directory (relative to the
+ *                                        current child or parent theme) to check
+ *                                        for $filename. If 'true', then it
+ *                                        indicates the filename includes the
+ *                                        directory. Default ''.
+ * @param string      $show_if_not_exists Optional. Text to display if the file
+ *                                        does not exist. $format must also be
+ *                                        specified. Format is the same as $format
+ *                                        argument. Default ''.
+ * @return bool|string True/false if no $format is specified, otherwise the
+ *                     percent-tag-substituted $format string.
  */
 function c2c_if_theme_file_exists( $filename, $format = '', $echo = true, $dir = '', $show_if_not_exists = '' ) {
 	if ( ! is_bool( $dir ) ) {
