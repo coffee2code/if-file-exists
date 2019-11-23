@@ -1,6 +1,6 @@
 # Changelog
 
-## _(in-progress)_
+## 2.2.7 _(2019-11-22)_
 * Change: Note compatibility through WP 5.3+
 * Change: Update copyright date (2020)
 

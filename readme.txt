@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.7
 Tested up to: 5.3
-Stable tag: 2.2.6
+Stable tag: 2.2.7
 
 Check if a file exists and return true/false or display a string containing information about the file.
 
@@ -153,6 +153,10 @@ Do:
 
 == Changelog ==
 
+= 2.2.7 (2019-11-22) =
+* Change: Note compatibility through WP 5.3+
+* Change: Update copyright date (2020)
+
 = 2.2.6 (2019-02-11) =
 * New: Add CHANGELOG.md and move all but most recent changelog entries into it
 * Change: Note compatibility through WP 5.1+
@@ -171,20 +175,13 @@ Do:
 * Change: Note compatibility through WP 4.9+
 * Change: Update copyright date (2018)
 
-= 2.2.4 (2017-02-16) =
-* Fix: Fix a few unit tests
-* Change: Update unit test bootstrap
-    * Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable
-    * Enable more error output for unit tests
-* Change: Note compatibility through WP 4.7+
-* Change: Minor readme.txt content and formatting tweaks
-* Change: Update copyright date (2017)
-* New: Add LICENSE file
-
 = Full changelog is available in [CHANGELOG.md](CHANGELOG.md). =
 
 
 == Upgrade Notice ==
+
+= 2.2.7 =
+Trivial update: noted compatibility through WP 5.3+ and updated copyright date (2020).
 
 = 2.2.6 =
 Trivial update: created CHANGELOG.md to store historical changelog outside of readme.txt, noted compatibility through WP 5.1+, and updated copyright date (2019)
