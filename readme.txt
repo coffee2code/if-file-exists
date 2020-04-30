@@ -20,7 +20,7 @@ This plugin provides the functions `c2c_if_file_exists()`, `c2c_if_theme_file_ex
 
 By default, 'c2c_if_file_exists()' assumes you are looking for the file relative to the default WordPress upload directory. If you wish to search another directory, specify it as the $dir argument. 'c2c_if_theme_file_exists()' assumes you are looking for a file relative to the currently active theme's home directory. 'c2c_if_plugin_file_exists()' assumes you are looking for a file relative to the directory that contains WordPress plugins.
 
-Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/if-file-exists/) | [Plugin Directory Page](https://wordpress.org/plugins/if-file-exists/) | [GitHub](https://github.com/coffee2code/if-file-exists/) | [Author Homepage](http://coffee2code.com)
+Links: [Plugin Homepage](https://coffee2code.com/wp-plugins/if-file-exists/) | [Plugin Directory Page](https://wordpress.org/plugins/if-file-exists/) | [GitHub](https://github.com/coffee2code/if-file-exists/) | [Author Homepage](https://coffee2code.com)
 
 
 == Installation ==
