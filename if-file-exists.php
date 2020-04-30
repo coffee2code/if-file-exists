@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: If File Exists
- * Version:     2.2.7
+ * Version:     2.2.8
  * Plugin URI:  https://coffee2code.com/wp-plugins/if-file-exists/
  * Author:      Scott Reilly
  * Author URI:  https://coffee2code.com/
@@ -18,7 +18,7 @@
  *
  * @package If_File_Exists
  * @author  Scott Reilly
- * @version 2.2.7
+ * @version 2.2.8
  */
 
 /*

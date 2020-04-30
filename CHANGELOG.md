@@ -1,6 +1,6 @@
 # Changelog
 
-## _(in-progress)_
+## 2.2.8 _(2020-04-30)_
 * Fix: Use full path to CHANGELOG.md in the Changelog section of readme.txt
 * Change: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests
 * Change: Note compatibility through WP 5.4+

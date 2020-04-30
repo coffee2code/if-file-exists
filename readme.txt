@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.7
 Tested up to: 5.4
-Stable tag: 2.2.7
+Stable tag: 2.2.8
 
 Check if a file exists and return true/false or display a string containing information about the file.
 
@@ -153,6 +153,13 @@ Do:
 
 == Changelog ==
 
+= 2.2.8 (2020-04-30) =
+* Fix: Use full path to CHANGELOG.md in the Changelog section of readme.txt
+* Change: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests
+* Change: Note compatibility through WP 5.4+
+* Change: Update links to coffee2code.com to be HTTPS
+* Change: Use backticks to denote code in readme.txt
+
 = 2.2.7 (2019-11-22) =
 * Change: Note compatibility through WP 5.3+
 * Change: Update copyright date (2020)
@@ -166,19 +173,13 @@ Do:
 * Change: Update License URI to be HTTPS
 * Change: Split paragraph in README.md's "Support" section into two
 
-= 2.2.5 (2018-05-22) =
-* New: Add README.md
-* New: Add GitHub link to readme
-* Change: Minor whitespace tweaks to unit test bootstrap
-* Change: Rename readme.txt section from 'Filters' to 'Hooks'
-* Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
-* Change: Note compatibility through WP 4.9+
-* Change: Update copyright date (2018)
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/if-file-exists/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 2.2.8 =
+Trivial update: Fixed a link in readme.txt, updated a few URLs to be HTTPS and noted compatibility through WP 5.4+.
 
 = 2.2.7 =
 Trivial update: noted compatibility through WP 5.3+ and updated copyright date (2020).
