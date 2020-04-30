@@ -18,7 +18,7 @@ This plugin provides the functions `c2c_if_file_exists()`, `c2c_if_theme_file_ex
 * If a format string is not passed to it, the functions return a simple boolean (true or false) indicating if the specified file exists.
 * Otherwise, the format string provided to it will be used to construct a response string, which can be customized to display information about the file (such as file_name, file_url, or file_path). If the `$echo` argument is true, that string is displayed on the page. Regardless of the value of `$echo`, the response string is returned by the function.
 
-By default, 'c2c_if_file_exists()' assumes you are looking for the file relative to the default WordPress upload directory. If you wish to search another directory, specify it as the $dir argument. 'c2c_if_theme_file_exists()' assumes you are looking for a file relative to the currently active theme's home directory. 'c2c_if_plugin_file_exists()' assumes you are looking for a file relative to the directory that contains WordPress plugins.
+By default, `c2c_if_file_exists()` assumes you are looking for the file relative to the default WordPress upload directory. If you wish to search another directory, specify it as the `$dir` argument. `c2c_if_theme_file_exists()` assumes you are looking for a file relative to the currently active theme's home directory. `c2c_if_plugin_file_exists()` assumes you are looking for a file relative to the directory that contains WordPress plugins.
 
 Links: [Plugin Homepage](https://coffee2code.com/wp-plugins/if-file-exists/) | [Plugin Directory Page](https://wordpress.org/plugins/if-file-exists/) | [GitHub](https://github.com/coffee2code/if-file-exists/) | [Author Homepage](https://coffee2code.com)
 
