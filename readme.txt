@@ -175,7 +175,7 @@ Do:
 * Change: Note compatibility through WP 4.9+
 * Change: Update copyright date (2018)
 
-= Full changelog is available in [CHANGELOG.md](CHANGELOG.md). =
+_Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/if-file-exists/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
