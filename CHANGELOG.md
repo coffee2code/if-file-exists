@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* New: Add TODO.md for newly added potential TODO items
 * Change: Restructure unit test file structure
     * New: Create new subdirectory `phpunit/` to house all files related to unit testing
     * Change: Move `bin/` to `phpunit/bin/`
