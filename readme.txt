@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.7
 Tested up to: 5.7
-Stable tag: 2.2.9
+Stable tag: 2.2.10
 
 Check if a file exists and return true/false or display a string containing information about the file.
 
@@ -153,6 +153,10 @@ Do:
 
 == Changelog ==
 
+= 2.2.10 (2021-04-14) =
+* Change: Note compatibility through WP 5.7+
+* Change: Update copyright date (2021)
+
 = 2.2.9 (2020-09-02) =
 * New: Add TODO.md for newly added potential TODO items
 * Change: Restructure unit test file structure
@@ -170,14 +174,13 @@ Do:
 * Change: Update links to coffee2code.com to be HTTPS
 * Change: Use backticks to denote code in readme.txt
 
-= 2.2.7 (2019-11-22) =
-* Change: Note compatibility through WP 5.3+
-* Change: Update copyright date (2020)
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/if-file-exists/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 2.2.10 =
+Trivial update: noted compatibility through WP 5.7+ and updated copyright date (2021)
 
 = 2.2.9 =
 Trivial update: Restructured unit test file structure and noted compatibility through WP 5.5+.
