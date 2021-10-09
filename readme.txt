@@ -25,7 +25,7 @@ Links: [Plugin Homepage](https://coffee2code.com/wp-plugins/if-file-exists/) | [
 
 == Installation ==
 
-1. Install via the built-in WordPress plugin installer. Or download and unzip `if-file-exists.zip` inside the plugins directory for your site (typically `wp-content/plugins/`)
+1. Install via the built-in WordPress plugin installer. Or install the plugin code inside the plugins directory for your site (typically `/wp-content/plugins/`).
 2. Activate the plugin through the 'Plugins' admin menu in WordPress
 3. In one or more of your templates, utilize one of the template tags provided by this plugin (see examples)
 
