@@ -1,7 +1,7 @@
 === If File Exists ===
 Contributors: coffee2code
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6ARCFJ9TX3522
-Tags: file, exists, existence, check, presence, files, theme, template tag, coffee2code
+Tags: file, exists, existence, filesystem, coffee2code
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.7
