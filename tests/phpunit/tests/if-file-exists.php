@@ -20,6 +20,17 @@ class Reveal_Template_Test extends WP_UnitTestCase {
 		return $out;
 	}
 
+	public function get_file_formatting_placeholders() {
+		return array(
+			array( '%file_name%' ),
+			array( '%file_directory%' ),
+			array( '%file_extension%' ),
+			array( '%file_path%' ),
+			array( '%file_url%' ),
+			array( 'file exists', ),
+		);
+	}
+
 
 	//
 	//
@@ -67,15 +78,13 @@ class Reveal_Template_Test extends WP_UnitTestCase {
 		$this->assertTrue( c2c_if_file_exists( 'version.php', '', false, ABSPATH . 'wp-includes' ) );
 	}
 
-	public function test_format_string_for_nonexistent_file() {
+	/**
+	 * @dataProvider get_file_formatting_placeholders
+	 */
+	public function test_format_string_for_nonexistent_file( $placeholder ) {
 		$f = 'nonexistent.txt';
 
-		$this->assertEmpty( c2c_if_file_exists( $f, '%file_name%' ) );
-		$this->assertEmpty( c2c_if_file_exists( $f, '%file_directory%' ) );
-		$this->assertEmpty( c2c_if_file_exists( $f, '%file_extension%' ) );
-		$this->assertEmpty( c2c_if_file_exists( $f, '%file_path%' ) );
-		$this->assertEmpty( c2c_if_file_exists( $f, '%file_url%' ) );
-		$this->assertEmpty( c2c_if_file_exists( $f, 'file exists', true ) );
+		$this->assertEmpty( c2c_if_file_exists( $f, $placeholder ) );
 	}
 
 	public function test_format_string_for_existing_file_with_full_path() {
@@ -119,15 +128,13 @@ class Reveal_Template_Test extends WP_UnitTestCase {
 		$this->assertEquals( $filename, c2c_if_file_exists( $filename, '%file_name%', false, $dir, 'file does not exist' ) );
 	}
 
-	public function test_echo_for_nonexistent_file() {
+	/**
+	 * @dataProvider get_file_formatting_placeholders
+	 */
+	public function test_echo_for_nonexistent_file( $placeholder ) {
 		$f = 'nonexistent.txt';
 
-		$this->assertEmpty( $this->get_echo_output( $f, '%file_name%', true ) );
-		$this->assertEmpty( $this->get_echo_output( $f, '%file_directory%', true ) );
-		$this->assertEmpty( $this->get_echo_output( $f, '%file_extension%', true ) );
-		$this->assertEmpty( $this->get_echo_output( $f, '%file_path%', true ) );
-		$this->assertEmpty( $this->get_echo_output( $f, '%file_url%', true ) );
-		$this->assertEmpty( $this->get_echo_output( $f, 'file exists', true ) );
+		$this->assertEmpty( $this->get_echo_output( $f, $placeholder, true ) );
 	}
 
 	public function test_echo_for_existing_file() {

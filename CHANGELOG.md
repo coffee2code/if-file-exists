@@ -7,6 +7,7 @@
 * Change: Tweak installation instruction
 * Change: Pare down tags in readme.txt header
 * Unit tests:
+    * New: Add dataProvider `get_file_formatting_placeholders()` and use it instead of explicitly listing assertions for each placeholder
     * Change: Restructure unit test directories
         * Change: Move `phpunit/` into `tests/`
         * Change: Move `phpunit/bin` into `tests/`
