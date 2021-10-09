@@ -243,17 +243,3 @@ function c2c_if_theme_file_exists( $filename, $format = '', $echo = true, $dir =
 }
 add_filter( 'c2c_if_theme_file_exists', 'c2c_if_theme_file_exists', 10, 5 );
 endif;
-
-
-/**
- * Checks if a file exists and returns true/false or displays a string
- * containing information about the file.
- *
- * @deprecated 2.0 Use the identical, renamed version of this, c2c_if_file_exists(), instead.
- */
-if ( ! function_exists( 'if_file_exists' ) ) :
-function if_file_exists( $filename, $format = '', $echo = true, $dir = '' ) {
-	_deprecated_function( __FUNCTION__, '2.0', 'c2c_if_file_exists' );
-	return c2c_if_file_exists( $filename, $format , $echo , $dir );
-}
-endif;
