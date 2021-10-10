@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.7
 Tested up to: 5.8
-Stable tag: 2.2.10
+Stable tag: 2.3
 
 Check if a file exists and return true/false or display a string containing information about the file.
 
@@ -49,6 +49,28 @@ Theses are the hooks provided by the plugin:
 
 == Changelog ==
 
+= 2.3 (2021-10-09) =
+Highlights:
+
+This minor release removes support for the long-deprecated `if_file_exists()`, adds DEVELOPER-DOCS.md, notes compatibility through WP 5.8+, and minor reorganization and tweaks to unit tests.
+
+Details:
+
+* Change: Remove support for long-deprecated `if_file_exists()`
+* New: Add DEVELOPER-DOCS.md and move template tags and hooks documentation into it
+* Change: Note compatibility through WP 5.8+
+* Change: Tweak installation instruction
+* Change: Pare down tags in readme.txt header
+* Unit tests:
+    * New: Add dataProvider `get_file_formatting_placeholders()` and use it instead of explicitly listing assertions for each placeholder
+    * Change: Restructure unit test directories
+        * Change: Move `phpunit/` into `tests/`
+        * Change: Move `phpunit/bin` into `tests/`
+    * Change: Remove 'test-' prefix from unit test file
+    * Change: Remove `get_echo_output()` and replaces its use with built-in `expectOutputRegex()`
+    * Change: In bootstrap, store path to plugin file constant
+    * Change: In bootstrap, add backcompat for PHPUnit pre-v6.0
+
 = 2.2.10 (2021-04-14) =
 * Change: Note compatibility through WP 5.7+
 * Change: Update copyright date (2021)
@@ -63,17 +85,13 @@ Theses are the hooks provided by the plugin:
     * Change: Rename `phpunit.xml` to `phpunit.xml.dist` per best practices
 * Change: Note compatibility through WP 5.5+
 
-= 2.2.8 (2020-04-30) =
-* Fix: Use full path to CHANGELOG.md in the Changelog section of readme.txt
-* Change: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests
-* Change: Note compatibility through WP 5.4+
-* Change: Update links to coffee2code.com to be HTTPS
-* Change: Use backticks to denote code in readme.txt
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/if-file-exists/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 2.3 =
+Minor update: removed support for long-deprecated `if_file_exists()`, added DEVELOPER-DOCS.md, noted compatibility through WP 5.8+, and minor reorganization and tweaks to unit tests
 
 = 2.2.10 =
 Trivial update: noted compatibility through WP 5.7+ and updated copyright date (2021)

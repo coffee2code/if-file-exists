@@ -1,6 +1,13 @@
 # Changelog
 
-## _(in-progress)_
+## 2.3 _(2021-10-09)_
+
+### Highlights:
+
+This minor release removes support for the long-deprecated `if_file_exists()`, adds DEVELOPER-DOCS.md, notes compatibility through WP 5.8+, and minor reorganization and tweaks to unit tests.
+
+### Details:
+
 * Change: Remove support for long-deprecated `if_file_exists()`
 * New: Add DEVELOPER-DOCS.md and move template tags and hooks documentation into it
 * Change: Note compatibility through WP 5.8+
