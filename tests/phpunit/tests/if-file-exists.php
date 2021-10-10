@@ -27,7 +27,7 @@ class Reveal_Template_Test extends WP_UnitTestCase {
 			array( '%file_extension%' ),
 			array( '%file_path%' ),
 			array( '%file_url%' ),
-			array( 'file exists', ),
+			array( 'file exists' ),
 		);
 	}
 
