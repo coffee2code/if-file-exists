@@ -11,15 +11,6 @@ class Reveal_Template_Test extends WP_UnitTestCase {
 	//
 
 
-	 protected function get_echo_output( $filename, $format = '', $echo = true, $dir = '', $show_if_not_exists = '' ) {
-		ob_start();
-		c2c_if_file_exists( $filename, $format, $echo, $dir, $show_if_not_exists );
-		$out = ob_get_contents();
-		ob_end_clean();
-
-		return $out;
-	}
-
 	public function get_file_formatting_placeholders() {
 		return array(
 			array( '%file_name%' ),
@@ -134,21 +125,28 @@ class Reveal_Template_Test extends WP_UnitTestCase {
 	public function test_echo_for_nonexistent_file( $placeholder ) {
 		$f = 'nonexistent.txt';
 
-		$this->assertEmpty( $this->get_echo_output( $f, $placeholder, true ) );
+		$this->expectOutputRegex( '/^$/', c2c_if_file_exists( $f, $placeholder, true ) );
 	}
 
-	public function test_echo_for_existing_file() {
+	/**
+	 * @dataProvider get_file_formatting_placeholders
+	 */
+	public function test_echo_for_existing_file( $placeholder ) {
 		$dir = 'wp-includes';
 		$filename = 'version.php';
 		$f = ABSPATH . 'wp-includes/version.php';
 		$parts = pathinfo( $f );
 
-		$this->assertEquals( $filename, $this->get_echo_output( $filename, '%file_name%', true, $dir ) );
-		$this->assertEquals( dirname( $f ), $this->get_echo_output( $filename, '%file_directory%', true, $dir ) );
-		$this->assertEquals( $parts['extension'], $this->get_echo_output( $filename, '%file_extension%', true, $dir ) );
-		$this->assertEquals( $f, $this->get_echo_output( $filename, '%file_path%', true, $dir ) );
-		$this->assertEquals( includes_url( 'version.php' ), $this->get_echo_output( $filename, '%file_url%', true, $dir ) );
-		$this->assertEquals( 'file exists', $this->get_echo_output( $filename, 'file exists', true, $dir ) );
+		$expectations = array(
+			'%file_name%'      => $filename,
+			'%file_directory%' => dirname( $f ),
+			'%file_extension%' => $parts['extension'],
+			'%file_path%'      => $f,
+			'%file_url%'       => includes_url( 'version.php' ),
+			'file exists'      => 'file exists',
+		);
+
+		$this->expectOutputRegex( '/' . preg_quote( $expectations[ $placeholder ], '/' ) . '/', c2c_if_file_exists( $filename, $placeholder, true, $dir ) );
 	}
 
 	public function test_if_plugin_file_exists_with_nonexistent_file() {

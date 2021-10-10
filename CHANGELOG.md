@@ -12,6 +12,7 @@
         * Change: Move `phpunit/` into `tests/`
         * Change: Move `phpunit/bin` into `tests/`
     * Change: Remove 'test-' prefix from unit test file
+    * Change: Remove `get_echo_output()` and replaces its use with built-in `expectOutputRegex()`
     * Change: In bootstrap, store path to plugin file constant
     * Change: In bootstrap, add backcompat for PHPUnit pre-v6.0
 
