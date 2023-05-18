@@ -5,7 +5,7 @@ Tags: file, exists, existence, filesystem, coffee2code
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.7
-Tested up to: 5.8
+Tested up to: 6.3
 Stable tag: 2.3
 
 Check if a file exists and return true/false or display a string containing information about the file.
