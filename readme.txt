@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.7
 Tested up to: 6.3
-Stable tag: 2.3
+Stable tag: 2.3.1
 
 Check if a file exists and return true/false or display a string containing information about the file.
 
@@ -49,6 +49,11 @@ Theses are the hooks provided by the plugin:
 
 == Changelog ==
 
+= 2.3.1 (2023-05-18) =
+* Change: Note compatibility through WP 6.3+
+* Change: Update copyright date (2023)
+* New: Add a potential TODO item
+
 = 2.3 (2021-10-09) =
 Highlights:
 
@@ -75,20 +80,13 @@ Details:
 * Change: Note compatibility through WP 5.7+
 * Change: Update copyright date (2021)
 
-= 2.2.9 (2020-09-02) =
-* New: Add TODO.md for newly added potential TODO items
-* Change: Restructure unit test file structure
-    * New: Create new subdirectory `phpunit/` to house all files related to unit testing
-    * Change: Move `bin/` to `phpunit/bin/`
-    * Change: Move `tests/bootstrap.php` to `phpunit/`
-    * Change: Move `tests/` to `phpunit/tests/`
-    * Change: Rename `phpunit.xml` to `phpunit.xml.dist` per best practices
-* Change: Note compatibility through WP 5.5+
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/if-file-exists/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 2.3.1 =
+Trivial update: noted compatibility through WP 6.3+ and updated copyright date (2023)
 
 = 2.3 =
 Minor update: removed support for long-deprecated `if_file_exists()`, added DEVELOPER-DOCS.md, noted compatibility through WP 5.8+, and minor reorganization and tweaks to unit tests
