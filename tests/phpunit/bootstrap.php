@@ -5,6 +5,9 @@
  * @package If_File_Exists
  */
 
+// Prevent web access.
+( php_sapi_name() !== 'cli' ) && die();
+
 define( 'IF_FILE_EXISTS_PLUGIN_DIR',  dirname( __FILE__, 3 ) );
 define( 'IF_FILE_EXISTS_PLUGIN_FILE', IF_FILE_EXISTS_PLUGIN_DIR . '/if-file-exists.php' );
 
