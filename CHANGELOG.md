@@ -1,6 +1,6 @@
 # Changelog
 
-## _(in-progress)_
+## 2.3.2 _(2024-08-02)_
 * Change: Note compatibility through WP 6.6+
 * Change: Update copyright date (2024)
 * New: Add `.gitignore` file

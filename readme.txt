@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.7
 Tested up to: 6.6
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 
 Check if a file exists and return true/false or display a string containing information about the file.
 
@@ -49,6 +49,17 @@ Theses are the hooks provided by the plugin:
 
 == Changelog ==
 
+= 2.3.2 (2024-08-02) =
+* Change: Note compatibility through WP 6.6+
+* Change: Update copyright date (2024)
+* New: Add `.gitignore` file
+* Change: Remove development and testing-related files from release packaging
+* Unit tests:
+    * Hardening: Prevent direct web access to `bootstrap.php`
+    * Allow tests to run against current versions of WordPress
+    * New: Add `composer.json` for PHPUnit Polyfill dependency
+    * Change: In bootstrap, store path to plugin directory in a constant
+
 = 2.3.1 (2023-05-18) =
 * Change: Note compatibility through WP 6.3+
 * Change: Update copyright date (2023)
@@ -76,14 +87,13 @@ Details:
     * Change: In bootstrap, store path to plugin file constant
     * Change: In bootstrap, add backcompat for PHPUnit pre-v6.0
 
-= 2.2.10 (2021-04-14) =
-* Change: Note compatibility through WP 5.7+
-* Change: Update copyright date (2021)
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/if-file-exists/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 2.3.2 =
+Trivial update: noted compatibility through WP 6.6+, removed unit tests from release packaging, and updated copyright date (2024)
 
 = 2.3.1 =
 Trivial update: noted compatibility through WP 6.3+ and updated copyright date (2023)
