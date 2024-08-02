@@ -5,7 +5,8 @@
  * @package If_File_Exists
  */
 
-define( 'IF_FILE_EXISTS_PLUGIN_FILE', dirname( __FILE__, 3 ) . '/if-file-exists.php' );
+define( 'IF_FILE_EXISTS_PLUGIN_DIR',  dirname( __FILE__, 3 ) );
+define( 'IF_FILE_EXISTS_PLUGIN_FILE', IF_FILE_EXISTS_PLUGIN_DIR . '/if-file-exists.php' );
 
 ini_set( 'display_errors', 'on' );
 error_reporting( E_ALL );

@@ -3,6 +3,8 @@
 ## _(in-progress)_
 * Change: Note compatibility through WP 6.6+
 * Change: Update copyright date (2024)
+* Unit tests:
+    * Change: In bootstrap, store path to plugin directory in a constant
 
 ## 2.3.1 _(2023-05-18)_
 * Change: Note compatibility through WP 6.3+
