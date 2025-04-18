@@ -40,7 +40,7 @@ As an overview, these are the template tags provided by the plugin:
 * `c2c_if_plugin_file_exists()` : Checks if a file exists (relative to the plugins directory) and returns true/false or displays a string containing information about the file.
 * `c2c_if_theme_file_exists()`  : Checks if a file exists (relative to the current theme's directory) and returns true/false or displays a string containing information about the file. If the current theme is a child theme, then the function will check if the file exists first in the child theme's directory, and if not there, then it will check the parent theme's directory.
 
-Theses are the hooks provided by the plugin:
+These are the hooks provided by the plugin:
 
 * `c2c_if_file_exists`        : Filter that allows use of an alternative approach to safely invoke `c2c_if_file_exists()` in such a way that if the plugin were deactivated or deleted, then your calls to the function won't cause errors in your site.
 * `c2c_if_plugin_file_exists` : Filter that allows use of an alternative approach to safely invoke `c2c_if_plugin_file_exists()` in such a way that if the plugin were deactivated or deleted, then your calls to the function won't cause errors in your site.
