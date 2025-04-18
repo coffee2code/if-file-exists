@@ -17,6 +17,8 @@ class Reveal_Template_Test extends WP_UnitTestCase {
 			array( '%file_directory%' ),
 			array( '%file_extension%' ),
 			array( '%file_path%' ),
+			array( '%file_size%' ),
+			array( '%file_size_bytes%' ),
 			array( '%file_url%' ),
 			array( 'file exists' ),
 		);
@@ -82,6 +84,8 @@ class Reveal_Template_Test extends WP_UnitTestCase {
 		$this->assertEquals( dirname( $f ), c2c_if_file_exists( $f, '%file_directory%', false, true ) );
 		$this->assertEquals( $parts['extension'], c2c_if_file_exists( $f, '%file_extension%', false, true ) );
 		$this->assertEquals( $f, c2c_if_file_exists( $f, '%file_path%', false, true ) );
+		$this->assertEquals( str_replace( '.00', '', size_format( filesize( $f ), 2 ) ), c2c_if_file_exists( $f, '%file_size%', false, true ) );
+		$this->assertEquals( filesize( $f ), c2c_if_file_exists( $f, '%file_size_bytes%', false, true ) );
 		$this->assertEquals( includes_url( 'version.php' ), c2c_if_file_exists( $f, '%file_url%', false, true ) );
 		$this->assertEquals( 'file exists', c2c_if_file_exists( $f, 'file exists', false, true ) );
 	}
@@ -96,6 +100,8 @@ class Reveal_Template_Test extends WP_UnitTestCase {
 		$this->assertEquals( dirname( $f ), c2c_if_file_exists( $filename, '%file_directory%', false, $dir ) );
 		$this->assertEquals( $parts['extension'], c2c_if_file_exists( $filename, '%file_extension%', false, $dir ) );
 		$this->assertEquals( $f, c2c_if_file_exists( $filename, '%file_path%', false, $dir ) );
+		$this->assertEquals( str_replace( '.00', '', size_format( filesize( $f ), 2 ) ), c2c_if_file_exists( $f, '%file_size%', false, true ) );
+		$this->assertEquals( filesize( $f ), c2c_if_file_exists( $f, '%file_size_bytes%', false, true ) );
 		$this->assertEquals( includes_url( 'version.php' ), c2c_if_file_exists( $filename, '%file_url%', false, $dir ) );
 		$this->assertEquals( 'file exists', c2c_if_file_exists( $filename, 'file exists', false, $dir ) );
 	}
@@ -224,6 +230,8 @@ class Reveal_Template_Test extends WP_UnitTestCase {
 			'%file_directory%' => dirname( $f ),
 			'%file_extension%' => $parts['extension'],
 			'%file_path%'      => $f,
+			'%file_size%'      => str_replace( '.00', '', size_format( filesize( $f ), 2 ) ),
+			'%file_size_bytes%'=> filesize( $f ),
 			'%file_url%'       => includes_url( 'version.php' ),
 			'file exists'      => 'file exists',
 		);

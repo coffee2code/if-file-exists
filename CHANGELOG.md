@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* New: Add '%file_size%' and '%file_size_bytes%' as additional substitution tags
 * Change: Escape `$format` and `$show_if_not_exists` values prior to display to omit unsafe markup
 * Change: Discontinue unnecessary explicit loading of textdomain
 * Change: Note compatibility through WP 6.8+

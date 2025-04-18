@@ -25,6 +25,8 @@ Optional. Text to be displayed or returned when $filename exists. Leave blank to
     * `%file_directory%` : the directory of the file, i.e. "/usr/local/www/yoursite/wp-content/uploads/"
     * `%file_extension%` : the extension of the file, i.e. "zip"`
     * `%file_name%` : the name of the file, i.e. "pictures.zip"
+    * `%file_size%` : the size of the file, in number of bytes to the largest unit the bytes will fit into, rounded to 2 decimal places, i.e. "1.24 MB"
+    * `%file_size_bytes%` : the size of the file, in bytes
     * `%file_url%` : the URL of the file, i.e. "http://yoursite.com/wp-content/uploads/pictures.zip"
     * `%file_path%`: the filesystem path to the file, i.e. "/usr/local/www/yoursite/wp-content/uploads/pictures.zip"
 
