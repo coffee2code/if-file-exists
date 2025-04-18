@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.7
 Tested up to: 6.8
-Stable tag: 2.3.2
+Stable tag: 2.4
 
 Check if a file exists and return true/false or display a string containing information about the file.
 
@@ -49,6 +49,16 @@ These are the hooks provided by the plugin:
 
 == Changelog ==
 
+= 2.4 (2025-04-18) =
+* New: Add '%file_size%' and '%file_size_bytes%' as additional substitution tags
+* Change: Escape `$format` and `$show_if_not_exists` values prior to display to omit unsafe markup
+* Change: Discontinue unnecessary explicit loading of textdomain
+* Change: Note compatibility through WP 6.8+
+* Change: Note compatibility through PHP 8.3+
+* Change: Update copyright date (2025)
+* Unit tests:
+    * Change: Change test class name to match plugin name
+
 = 2.3.2 (2024-08-02) =
 * Change: Note compatibility through WP 6.6+
 * Change: Update copyright date (2024)
@@ -65,32 +75,13 @@ These are the hooks provided by the plugin:
 * Change: Update copyright date (2023)
 * New: Add a potential TODO item
 
-= 2.3 (2021-10-09) =
-Highlights:
-
-This minor release removes support for the long-deprecated `if_file_exists()`, adds DEVELOPER-DOCS.md, notes compatibility through WP 5.8+, and minor reorganization and tweaks to unit tests.
-
-Details:
-
-* Change: Remove support for long-deprecated `if_file_exists()`
-* New: Add DEVELOPER-DOCS.md and move template tags and hooks documentation into it
-* Change: Note compatibility through WP 5.8+
-* Change: Tweak installation instruction
-* Change: Pare down tags in readme.txt header
-* Unit tests:
-    * New: Add dataProvider `get_file_formatting_placeholders()` and use it instead of explicitly listing assertions for each placeholder
-    * Change: Restructure unit test directories
-        * Change: Move `phpunit/` into `tests/`
-        * Change: Move `phpunit/bin` into `tests/`
-    * Change: Remove 'test-' prefix from unit test file
-    * Change: Remove `get_echo_output()` and replaces its use with built-in `expectOutputRegex()`
-    * Change: In bootstrap, store path to plugin file constant
-    * Change: In bootstrap, add backcompat for PHPUnit pre-v6.0
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/if-file-exists/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 2.4 =
+Minor update: added '%file_size%' and '%file_size_bytes%' substitution tags, escaped output before display to prevent unsafe markup, noted compatibility through WP 6.8+ and PHP 8.3+, and updated copyright date (2025)
 
 = 2.3.2 =
 Trivial update: noted compatibility through WP 6.6+, removed unit tests from release packaging, and updated copyright date (2024)
