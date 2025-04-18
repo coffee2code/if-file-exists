@@ -7,6 +7,8 @@
 * Change: Note compatibility through WP 6.8+
 * Change: Note compatibility through PHP 8.3+
 * Change: Update copyright date (2025)
+* Unit tests:
+    * Change: Change test class name to match plugin name
 
 ## 2.3.2 _(2024-08-02)_
 * Change: Note compatibility through WP 6.6+

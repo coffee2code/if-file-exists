@@ -2,7 +2,7 @@
 
 defined( 'ABSPATH' ) or die();
 
-class Reveal_Template_Test extends WP_UnitTestCase {
+class If_File_Exists_Test extends WP_UnitTestCase {
 
 	//
 	//
