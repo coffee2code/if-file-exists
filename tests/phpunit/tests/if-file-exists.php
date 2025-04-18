@@ -30,10 +30,6 @@ class Reveal_Template_Test extends WP_UnitTestCase {
 	//
 
 
-	public function test_hooks_action_plugins_loaded() {
-		$this->assertEquals( 10, has_action( 'plugins_loaded', 'c2c_if_file_exists_load_textdomain' ) );
-	}
-
 	public function test_detects_nonexistent_file_with_relative_path() {
 		$this->assertFalse( c2c_if_file_exists( 'nonexistent.txt' ) );
 	}

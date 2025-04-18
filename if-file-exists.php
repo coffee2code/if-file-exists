@@ -41,17 +41,6 @@
 
 defined( 'ABSPATH' ) or die();
 
-/**
- * Loads the plugin domain for If File Exists.
- *
- * @since 2.2.3
- */
-function c2c_if_file_exists_load_textdomain() {
-	load_plugin_textdomain( 'if-file-exists' );
-}
-add_action( 'plugins_loaded', 'c2c_if_file_exists_load_textdomain' );
-
-
 if ( ! function_exists( 'c2c_if_file_exists' ) ) :
 /**
  * Checks if a file exists.
