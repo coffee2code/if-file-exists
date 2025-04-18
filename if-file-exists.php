@@ -133,7 +133,7 @@ function c2c_if_file_exists( $filename, $format = '', $echo = true, $dir = '', $
 	}
 
 	if ( $echo ) {
-		echo $format;
+		echo wp_kses_post( $format );
 	}
 
 	return $format;

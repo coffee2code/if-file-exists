@@ -100,11 +100,97 @@ class Reveal_Template_Test extends WP_UnitTestCase {
 		$this->assertEquals( 'file exists', c2c_if_file_exists( $filename, 'file exists', false, $dir ) );
 	}
 
+	public function test_return_value_when_format_string_containss_safe_markup() {
+		$dir = 'wp-includes';
+		$filename = 'version.php';
+		$format = '<strong>%file_name%</strong>';
+		$expected = str_replace( '%file_name%', $filename, $format );
+
+		$this->assertEquals( $expected, c2c_if_file_exists( $filename, $format, false, $dir ) );
+	}
+
+	public function test_return_value_when_format_string_contains_unsafe_markup() {
+		$dir = 'wp-includes';
+		$filename = 'version.php';
+		$format = '<strong>%file_name% <script>alert("boom!");</script></strong>';
+		$expected = str_replace( '%file_name%', $filename, $format );
+
+		$this->assertEquals( $expected, c2c_if_file_exists( $filename, $format, false, $dir ) );
+	}
+
+	public function test_echo_value_when_format_string_containss_safe_markup() {
+		$dir = 'wp-includes';
+		$filename = 'version.php';
+		$format = '<strong>%file_name%</strong>';
+		$expected = str_replace( '%file_name%', $filename, $format );
+
+		ob_start();
+		c2c_if_file_exists( $filename, $format, true, $dir );
+		$out = ob_get_contents();
+		ob_end_clean();
+
+		$this->assertEquals( $expected, $out );
+	}
+
+	public function test_echo_value_when_format_string_contains_unsafe_markup() {
+		$dir = 'wp-includes';
+		$filename = 'version.php';
+		$format = '<strong>%file_name% <script>alert("boom!");</script></strong>';
+		$expected = '<strong>' . $filename . ' alert("boom!");</strong>';
+
+		ob_start();
+		c2c_if_file_exists( $filename, $format, true, $dir );
+		$out = ob_get_contents();
+		ob_end_clean();
+
+		$this->assertEquals( $expected, $out );
+	}
+
 	public function test_show_if_not_exists_for_nonexistent_file() {
 		$dir = 'wp-includes';
 		$msg = 'file does not exist';
 
 		$this->assertEquals( $msg, c2c_if_file_exists( 'nonexistent.php', '%file_name%', false, $dir, $msg ) );
+	}
+
+	public function test_return_value_when_show_if_not_exists_for_nonexistent_file_with_safe_markup() {
+		$dir = 'wp-includes';
+		$msg = '<strong>file does not exist</strong>';
+
+		$this->assertEquals( $msg, c2c_if_file_exists( 'nonexistent.php', '%file_name%', false, $dir, $msg ) );
+	}
+
+	public function test_return_value_when_show_if_not_exists_for_nonexistent_file_with_unsafe_markup() {
+		$dir = 'wp-includes';
+		$msg = '<strong>file does not exist <script>alert("boom");</script>!</strong>';
+		$expected = '<strong>file does not exist alert("boom");!</strong>';
+
+		$this->assertEquals( $msg, c2c_if_file_exists( 'nonexistent.php', '%file_name%', false, $dir, $msg ) );
+	}
+
+	public function test_echo_value_when_show_if_not_exists_for_nonexistent_file_with_safe_markup() {
+		$dir = 'wp-includes';
+		$msg = '<strong>file does not exist</strong>';
+
+		ob_start();
+		c2c_if_file_exists( 'nonexistent.php', '%file_name%', true, $dir, $msg );
+		$out = ob_get_contents();
+		ob_end_clean();
+
+		$this->assertEquals( $msg, $out );
+	}
+
+	public function test_echo_value_when_show_if_not_exists_for_nonexistent_file_with_unsafe_markup() {
+		$dir = 'wp-includes';
+		$msg = '<strong>file does not exist <script>alert("boom");</script>!</strong>';
+		$expected = '<strong>file does not exist alert("boom");!</strong>';
+
+		ob_start();
+		c2c_if_file_exists( 'nonexistent.php', '%file_name%', true, $dir, $msg );
+		$out = ob_get_contents();
+		ob_end_clean();
+
+		$this->assertEquals( $expected, $out );
 	}
 
 	public function test_show_if_not_exists_for_existing_file() {

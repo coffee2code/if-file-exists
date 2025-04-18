@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* Change: Escape `$format` and `$show_if_not_exists` values prior to display to omit unsafe markup
 * Change: Discontinue unnecessary explicit loading of textdomain
 * Change: Note compatibility through WP 6.8+
 * Change: Note compatibility through PHP 8.3+
